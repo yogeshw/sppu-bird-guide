@@ -1,0 +1,66 @@
+\documentclass[a5paper,12pt]{memoir}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{fontspec}
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+% Set page size to A5
+\geometry{a5paper}
+
+% Set fonts
+\setmainfont{Times New Roman}
+\setsansfont{Arial}
+
+% Define color scheme
+\definecolor{headingcolor}{RGB}{34, 139, 34} % Forest Green
+\definecolor{highlightcolor}{RGB}{139, 69, 19} % Saddle Brown
+
+% Title page
+\title{Birds of the University of Pune}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+% Table of contents
+\tableofcontents
+
+% Descriptive information
+\chapter*{Introduction}
+This bird guide provides information about the birds found at the University of Pune. The guide includes a photo of each bird and accompanying text similar to the content in the book of Indian birds available at \href{https://archive.org/download/BookOfIndianBirds/BookIndianBirds.pdf}{Book of Indian Birds}. The bird names have been updated according to the document at \href{https://indianbirds.in/pdfs/IB_11_5_6_Final.pdf}{Indian Birds}.
+
+% Bird sections
+\chapter{Birds}
+
+\section*{Bird Name 1}
+\textbf{Name:} Bird Name 1 \\
+\textbf{Size:} Medium \\
+\textbf{Field characters:} Description of field characters \\
+\textbf{Distribution:} Description of distribution \\
+\textbf{Habits:} Description of habits \\
+\textbf{Nesting:} Description of nesting \\
+\begin{flushright}
+\includegraphics[width=0.4\textwidth]{https://via.placeholder.com/150}
+\end{flushright}
+
+\newpage
+
+\section*{Bird Name 2}
+\textbf{Name:} Bird Name 2 \\
+\textbf{Size:} Small \\
+\textbf{Field characters:} Description of field characters \\
+\textbf{Distribution:} Description of distribution \\
+\textbf{Habits:} Description of habits \\
+\textbf{Nesting:} Description of nesting \\
+\begin{flushright}
+\includegraphics[width=0.4\textwidth]{https://via.placeholder.com/150}
+\end{flushright}
+
+\newpage
+
+% Add more bird sections as needed
+
+\end{document}

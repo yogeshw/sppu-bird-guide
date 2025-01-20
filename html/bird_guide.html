@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birds of the University of Pune</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            margin: 0;
+            padding: 0;
+        }
+        h1, h2 {
+            font-family: Arial, sans-serif;
+            color: #228B22; /* Forest Green */
+        }
+        .highlight {
+            color: #8B4513; /* Saddle Brown */
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        .bird-section {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        .bird-text {
+            width: 60%;
+        }
+        .bird-image {
+            width: 35%;
+            text-align: right;
+        }
+        .bird-image img {
+            max-width: 100%;
+        }
+        .toc {
+            margin-bottom: 20px;
+        }
+        .toc a {
+            text-decoration: none;
+            color: #228B22; /* Forest Green */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Birds of the University of Pune</h1>
+        <div class="toc">
+            <h2>Table of Contents</h2>
+            <ul>
+                <li><a href="#bird1">Bird Name 1</a></li>
+                <li><a href="#bird2">Bird Name 2</a></li>
+                <!-- Add more bird links as needed -->
+            </ul>
+        </div>
+        <div class="bird-section" id="bird1">
+            <div class="bird-text">
+                <h2>Bird Name 1</h2>
+                <p><span class="highlight">Name:</span> Bird Name 1</p>
+                <p><span class="highlight">Size:</span> Medium</p>
+                <p><span class="highlight">Field characters:</span> Description of field characters</p>
+                <p><span class="highlight">Distribution:</span> Description of distribution</p>
+                <p><span class="highlight">Habits:</span> Description of habits</p>
+                <p><span class="highlight">Nesting:</span> Description of nesting</p>
+            </div>
+            <div class="bird-image">
+                <img src="https://via.placeholder.com/150" alt="Bird Name 1">
+            </div>
+        </div>
+        <div class="bird-section" id="bird2">
+            <div class="bird-text">
+                <h2>Bird Name 2</h2>
+                <p><span class="highlight">Name:</span> Bird Name 2</p>
+                <p><span class="highlight">Size:</span> Small</p>
+                <p><span class="highlight">Field characters:</span> Description of field characters</p>
+                <p><span class="highlight">Distribution:</span> Description of distribution</p>
+                <p><span class="highlight">Habits:</span> Description of habits</p>
+                <p><span class="highlight">Nesting:</span> Description of nesting</p>
+            </div>
+            <div class="bird-image">
+                <img src="https://via.placeholder.com/150" alt="Bird Name 2">
+            </div>
+        </div>
+        <!-- Add more bird sections as needed -->
+    </div>
+</body>
+</html>

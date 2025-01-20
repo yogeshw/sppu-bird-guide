@@ -1,0 +1,39 @@
+Bird Name 1
+Name: Bird Name 1
+Size: Medium
+Field characters: Description of field characters
+Distribution: Description of distribution
+Habits: Description of habits
+Nesting: Description of nesting
+
+Bird Name 2
+Name: Bird Name 2
+Size: Small
+Field characters: Description of field characters
+Distribution: Description of distribution
+Habits: Description of habits
+Nesting: Description of nesting
+
+Bird Name 3
+Name: Bird Name 3
+Size: Large
+Field characters: Description of field characters
+Distribution: Description of distribution
+Habits: Description of habits
+Nesting: Description of nesting
+
+Bird Name 4
+Name: Bird Name 4
+Size: Medium
+Field characters: Description of field characters
+Distribution: Description of distribution
+Habits: Description of habits
+Nesting: Description of nesting
+
+Bird Name 5
+Name: Bird Name 5
+Size: Small
+Field characters: Description of field characters
+Distribution: Description of distribution
+Habits: Description of habits
+Nesting: Description of nesting
