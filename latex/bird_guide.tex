@@ -47,14 +47,14 @@
   }%
 }
 
-% Helper command to convert spaces and capitals to dashes and lowercase
-\usepackage{xstring}
-\newcommand{\formatimagefilename}[1]{%
-  \lowercase{\StrSubstitute{#1}{ }{-}}%
+% Simple credit file handling - just strip .jpg and add _credit.txt
+\newcommand{\getcreditname}[1]{%
+  \def\stripext##1.jpg{##1}%
+  \edef\creditfile{\stripext#1_credit.txt}%
 }
 
-% Update bird entry template with new image handling
-\newcommand{\birdentry}[8]{%
+% Update bird entry template to take explicit image filename
+\newcommand{\birdentry}[9]{%
   \index{#2@\textit{#2}}
   \begin{minipage}[t]{0.48\textwidth}
     \begin{mdframed}[
@@ -65,9 +65,15 @@
       rightmargin=0pt
     ]
       \begin{center}
-      \IfFileExists{../images/\formatimagefilename{#1}.jpg}
-        {\includegraphics[width=0.95\textwidth,height=0.8\textheight,keepaspectratio]{../images/\formatimagefilename{#1}.jpg}}
-        {\missingimage{#1}}
+      \IfFileExists{../images/#9}{%
+        \includegraphics[width=0.95\textwidth,height=0.8\textheight,keepaspectratio]
+        {../images/#9}%
+        \par\vspace{-1em}%
+        \getcreditname{#9}%
+        \hfill{\small\em Credit: \input{../images/\creditfile}}%
+      }{%
+        \missingimage{#1}%
+      }%
       \end{center}
     \end{mdframed}
   \end{minipage}\hfill
@@ -136,6 +142,13 @@
 
 \maketitle
 
+% Copyright notice
+\begin{center}
+\vspace{1cm}
+{\large\textcopyright{} 2024 Yogesh Wadadekar (wadadekar@gmail.com)}\\
+All rights reserved.
+\end{center}
+
 % Table of contents
 \tableofcontents
 
@@ -198,6 +211,7 @@
   {Found throughout the Indian subcontinent, including the University of Pune campus.}
   {Often seen soaring high in the sky, searching for prey. Feeds on small mammals, birds, and carrion.}
   {Breeds December to April. Builds nests in tall trees, using sticks and other plant materials. Lays 2-3 whitish eggs with brown spots. Both parents incubate for about 30 days and care for young.}
+  {brown-kite.jpg}
 
 \birdentry{Shikra}{\textit{Accipiter badius}}
   {Myna+}
@@ -206,6 +220,7 @@
   {Widely distributed across the Indian subcontinent, including the University of Pune campus.}
   {Prefers wooded areas and gardens. Feeds on small birds, mammals, and insects.}
   {Breeds March to July. Builds nests in trees, using twigs and leaves. Clutch of 3-4 pale bluish-white eggs. Female does most incubation for 28-30 days, male provides food.}
+  {shikra.jpg}
 
 \birdentry{White-breasted Waterhen}{\textit{Amaurornis phoenicurus}}
   {Bulbul+}
@@ -214,6 +229,7 @@
   {Found throughout the Indian subcontinent, including the University of Pune campus.}
   {Prefers marshy areas and wetlands. Feeds on insects, small fish, and plant matter.}
   {Builds nests in dense vegetation near water, using plant materials. Lays 4-6 creamy white eggs with reddish-brown spots. Both parents share incubation duties for about 19-20 days and care for the chicks.}
+  {white-breasted-waterhen.jpg}
 
 \birdentry{Indian Pond Heron}{\textit{Ardeola grayii}}
   {Myna+}
@@ -222,6 +238,7 @@
   {Found throughout the Indian subcontinent, including the University of Pune campus.}
   {Prefers wetlands, ponds, and marshes. Feeds on fish, frogs, and insects.}
   {Breeds June to September. Builds nests in trees or shrubs near water, using sticks and plant materials. Lays 3-5 pale blue-green eggs. Both parents incubate for about 18-24 days and feed the chicks.}
+  {indian-pond-heron.jpg}
 
 \birdentry{Black-crowned Night Heron}{\textit{Nycticorax nycticorax}}
   {Crow+}
@@ -230,6 +247,7 @@
   {Found throughout the Indian subcontinent, including the University of Pune campus.}
   {Prefers wetlands, ponds, and marshes. Feeds on fish, frogs, and insects.}
   {Breeds June to September. Builds nests in trees or shrubs near water, using sticks and plant materials. Lays 3-5 pale blue-green eggs. Both parents incubate for about 24-26 days and care for the young.}
+  {black-crowned-night-heron.jpg}
 
 \birdentry{Cattle Egret}{\textit{Bubulcus ibis}}
   {Myna++}
@@ -238,6 +256,7 @@
   {Found throughout the Indian subcontinent, including the University of Pune campus.}
   {Often seen near cattle, feeding on insects and small animals disturbed by the grazing animals.}
   {Breeds June to September during monsoon. Builds nests in colonies, using sticks and plant materials. Lays 3-4 pale blue eggs. Both parents incubate for about 23-26 days and feed the chicks.}
+  {cattle-egret.jpg}
 
 \birdentry{Little Egret}{\textit{Egretta garzetta}}
   {Myna++}
@@ -246,6 +265,7 @@
   {Found throughout the Indian subcontinent, including the University of Pune campus.}
   {Prefers wetlands, ponds, and marshes. Feeds on fish, frogs, and insects.}
   {Breeds June to September. Builds nests in colonies, using sticks and plant materials. Lays 3-5 pale blue-green eggs. Both parents incubate for about 21-25 days and care for the young.}
+  {little-egret.jpg}
 
 \birdentry{Blue Rock Pigeon}{\textit{Columba livia}}
   {Myna+}
@@ -254,6 +274,7 @@
   {Found throughout the Indian subcontinent, particularly abundant in urban areas including the University of Pune campus.}
   {Highly adapted to urban life. Often seen in flocks, feeding on grains and seeds on the ground.}
   {Breeds throughout the year. Nests in building ledges, window sills, and other artificial structures, using twigs and small sticks. Lays 2 white eggs. Both parents incubate for about 17-19 days and feed the chicks.}
+  {blue-rock-pigeon.jpg}
 
 \birdentry{Spotted Dove}{\textit{Streptopelia chinensis}}
   {Myna}
@@ -262,6 +283,7 @@
   {Widespread across the campus and surrounding areas.}
   {Usually seen in pairs or small groups, foraging on the ground for seeds and grains.}
   {Builds a flimsy platform nest in trees and shrubs, often in dense foliage. Lays 2 white eggs. Both parents incubate for about 14-16 days and care for the chicks.}
+  {spotted-dove.jpg}
 
 \birdentry{Little Brown Dove}{\textit{Streptopelia senegalensis}}
   {Myna-}
@@ -270,6 +292,7 @@
   {Common throughout the campus, especially in open areas.}
   {Often seen in pairs, feeding on seeds on the ground. Has a distinctive soft, musical call.}
   {Creates simple twig nests in bushes and low trees. Lays 2 white eggs. Both parents incubate for about 13-15 days and feed the chicks.}
+  {little-brown-dove.jpg}
 
 \birdentry{Red-wattled Lapwing}{\textit{Vanellus indicus}}
   {Myna++}
@@ -278,6 +301,7 @@
   {Found in open areas across the campus, particularly near water bodies.}
   {Known for its alarm call "did-he-do-it". Active during day and night, feeds on insects and small invertebrates.}
   {Nests on the ground in shallow scrapes, often on gravelly or rocky areas. Lays 3-4 olive-brown eggs with black spots. Both parents share incubation duties for about 28-30 days and care for the chicks.}
+  {red-wattled-lapwing.jpg}
 
 \birdentry{Asian Koel}{\textit{Eudynamys scolopacea}}
   {Crow-}
@@ -286,6 +310,7 @@
   {Common throughout the campus, especially in wooded areas.}
   {Known for its distinctive "ku-oo" call. Parasitizes crows' nests. Feeds mainly on fruits and berries.}
   {Brood parasite, lays eggs in nests of crows and other birds.}
+  {asian-koel.jpg}
 
 \birdentry{Greater Coucal}{\textit{Centropus sinensis}}
   {Crow}
@@ -294,6 +319,7 @@
   {Found in dense vegetation across the campus.}
   {Skulking habit, often seen walking on ground. Deep booming calls. Feeds on insects, small vertebrates.}
   {Builds a domed nest in dense vegetation, usually close to the ground. Lays 3-5 white eggs. Both parents share incubation duties for about 15-16 days and care for the chicks.}
+  {greater-coucal.jpg}
 
 \birdentry{Rose-ringed Parakeet}{\textit{Psittacula krameri}}
   {Myna++}
@@ -302,6 +328,7 @@
   {Abundant throughout the campus, especially in wooded areas.}
   {Noisy, gregarious birds. Often seen in large flocks. Feeds on fruits, seeds, and grains.}
   {Breeds December to May. Nests in tree hollows, often competing with other cavity-nesters. Lays 3-4 white eggs. Both parents incubate for about 22-24 days and feed the chicks.}
+  {rose-ringed-parakeet.jpg}
 
 \birdentry{Alexandrine Parakeet}{\textit{Psittacula eupatria}}
   {Crow}
@@ -310,6 +337,7 @@
   {Found in wooded areas of the campus, less common than other parakeets.}
   {Similar habits to Rose-ringed Parakeet but more wary. Feeds on fruits and seeds.}
   {Nests in large tree cavities, preferring old growth trees. Lays 2-4 white eggs. Both parents incubate for about 23-26 days and care for the chicks.}
+  {alexandrine-parakeet.jpg}
 
 \birdentry{Plum-headed Parakeet}{\textit{Psittacula cyanocephala}}
   {Myna}
@@ -318,6 +346,7 @@
   {Regular visitor to wooded areas of the campus.}
   {Usually in pairs or small flocks. More arboreal than other parakeets. Feeds mainly on fruits and seeds.}
   {Nests in tree hollows, breeding season varies with location. Lays 3-4 white eggs. Both parents incubate for about 22-24 days and feed the chicks.}
+  {plum-headed-parakeet.jpg}
 
 \birdentry{House Swift}{\textit{Apus affinis}}
   {Myna-}
@@ -326,6 +355,7 @@
   {Common throughout urban areas of the campus.}
   {Aerial feeder, constantly on wing. Often seen in large groups swooping near buildings.}
   {Colonial nester, builds mud nests under building eaves and bridges. Lays 2-3 white eggs. Both parents incubate for about 19-21 days and care for the chicks.}
+  {house-swift.jpg}
 
 \birdentry{White-breasted Kingfisher}{\textit{Halcyon smyrnensis}}
   {Myna+}
@@ -334,6 +364,7 @@
   {Found near water bodies and in gardens across campus.}
   {Perches prominently, diving for prey. Feeds on fish, frogs, lizards, and large insects.}
   {Breeds March to June. Nests in horizontal tunnels dug in earth banks. Lays 4-7 white eggs. Both parents share incubation duties for about 20-22 days and care for the chicks.}
+  {white-breasted-kingfisher.jpg}
 
 \birdentry{Coppersmith Barbet}{\textit{Megalaima haemacephala}}
   {Bulbul+}
@@ -342,6 +373,7 @@
   {Found in wooded areas throughout the campus.}
   {Known for its metallic 'tuk-tuk-tuk' call. Feeds mainly on fruits, especially figs.}
   {Excavates nest holes in dead tree trunks or branches. Lays 2-4 white eggs. Both parents incubate for about 13-15 days and feed the chicks.}
+  {coppersmith-barbet.jpg}
 
 \birdentry{Dusky Crag Martin}{\textit{Hirundo concolor}}
   {Sparrow-}
@@ -350,6 +382,7 @@
   {Found around buildings and rocky areas of campus.}
   {Aerial feeder, catching insects in flight. Often seen gliding near buildings.}
   {Builds cup-shaped mud nests on buildings and rock faces. Lays 2-3 white eggs. Both parents incubate for about 14-16 days and care for the chicks.}
+  {dusky-crag-martin.jpg}
 
 \birdentry{Barn Swallow}{\textit{Hirundo rustica}}
   {Sparrow}
@@ -358,6 +391,7 @@
   {Winter visitor to campus, seen in open areas.}
   {Graceful flier, catching insects on wing. Often perches on wires.}
   {Does not breed on campus; winter visitor only.}
+  {barn-swallow.jpg}
 
 \birdentry{Red-rumped Swallow}{\textit{Hirundo daurica}}
   {Sparrow}
@@ -366,6 +400,7 @@
   {Found throughout campus, especially near buildings.}
   {Aerial feeder, often in mixed flocks with other swallows.}
   {Builds bottle-shaped mud nests under structures. Lays 3-4 white eggs. Both parents incubate for about 14-16 days and care for the chicks.}
+  {red-rumped-swallow.jpg}
 
 \birdentry{Wire-tailed Swallow}{\textit{Hirundo smithii}}
   {Sparrow}
@@ -374,6 +409,7 @@
   {Found near water bodies and open areas on campus.}
   {Graceful flier, often perches on wires. Feeds on flying insects.}
   {Builds cup-shaped mud nests under bridges and buildings. Lays 2-3 white eggs. Both parents incubate for about 14-16 days and care for the chicks.}
+  {wire-tailed-swallow.jpg}
 
 \birdentry{Long-tailed Shrike}{\textit{Lanius schach}}
   {Bulbul+}
@@ -382,6 +418,7 @@
   {Found in open areas with scattered trees.}
   {Hunts from prominent perches. Impales prey on thorns. Feeds on insects, lizards, and small birds.}
   {Builds neat cup-shaped nest in thorny bushes. Lays 3-6 white eggs with brown spots. Both parents share incubation duties for about 15-16 days and care for the chicks.}
+  {long-tailed-shrike.jpg}
 
 \birdentry{Golden Oriole}{\textit{Oriolus oriolus}}
   {Myna+}
@@ -390,6 +427,7 @@
   {Found in wooded areas across campus.}
   {Shy bird, keeps to canopy. Melodious flute-like calls. Feeds on fruits and insects.}
   {Builds hammock-like nest suspended in tree fork. Lays 2-4 white eggs with reddish-brown spots. Both parents share incubation duties for about 14-16 days and care for the chicks.}
+  {golden-oriole.jpg}
 
 \birdentry{Common Myna}{\textit{Acridotheres tristis}}
   {Myna}
@@ -398,6 +436,7 @@
   {Abundant throughout campus in all habitats.}
   {Bold, adaptable bird. Often in pairs or groups. Omnivorous diet.}
   {Nests in holes in trees, buildings, and other structures. Lays 4-6 blue-green eggs. Both parents share incubation duties for about 13-15 days and care for the chicks.}
+  {common-myna.jpg}
 
 \birdentry{Common Iora}{\textit{Aegithina tiphia}}
   {Sparrow-}
@@ -406,6 +445,7 @@
   {Found in wooded areas and gardens.}
   {Active forager in foliage. Sweet calls. Feeds mainly on insects.}
   {Builds small cup-shaped nest in tree fork. Lays 2-4 white eggs with reddish-brown spots. Both parents share incubation duties for about 14-16 days and care for the chicks.}
+  {common-iora.jpg}
 
 \birdentry{Red-vented Bulbul}{\textit{Pycnonotus cafer}}
   {Bulbul}
@@ -414,6 +454,7 @@
   {Common throughout campus in all habitats.}
   {Active and noisy. Often in pairs or small groups. Feeds on fruits and insects.}
   {Breeds year-round, peak February to May. Builds cup-shaped nest in bushes and small trees. Lays 2-3 pinkish-white eggs with red-brown spots. Both parents incubate for 14 days and feed chicks.}
+  {red-vented-bulbul.jpg}
 
 \birdentry{Red-whiskered Bulbul}{\textit{Pycnonotus jocosus}}
   {Bulbul}
@@ -422,6 +463,7 @@
   {Found in wooded areas and gardens across campus.}
   {Lively bird with pleasant calls. Often in pairs. Feeds on fruits and insects.}
   {Builds neat cup-shaped nest in shrubs and small trees. Lays 2-3 pinkish-white eggs with red-brown spots. Both parents incubate for about 12-14 days and care for the chicks.}
+  {red-whiskered-bulbul.jpg}
 
 \birdentry{Large Grey Babbler}{\textit{Turdoides malcolmi}}
   {Myna+}
@@ -430,6 +472,7 @@
   {Found in open scrub and gardens across campus.}
   {Lives in noisy groups. Forages on ground, flicking leaves. Feeds on insects and berries.}
   {Breeds March to September. Builds untidy nest in thorny bushes. Lays 3-4 turquoise blue eggs. Group members help in nesting duties.}
+  {large-grey-babbler.jpg}
 
 \birdentry{Tickell's Blue Flycatcher}{\textit{Muscicappa tickelliae}}
   {Bulbul-}
@@ -438,6 +481,7 @@
   {Found in wooded areas with good undergrowth.}
   {Active bird, makes short flycatching sallies from perch. Sweet whistling calls.}
   {Breeds April to July. Builds neat cup nest in tree hollow or cleft. Lays 3-4 pale eggs with brown spots.}
+  {tickells-blue-flycatcher.jpg}
 
 \birdentry{Ashy Prinia}{\textit{Prinia socialis}}
   {Sparrow-}
@@ -446,6 +490,7 @@
   {Found in gardens and scrub throughout campus.}
   {Active bird, moves through vegetation making harsh calls.}
   {Breeds mainly June to September. Builds deep cup nest in grass or bushes. Lays 3-5 brick-red eggs.}
+  {ashy-prinia.jpg}
 
 \birdentry{Jungle Prinia}{\textit{Prinia sylvatica}}
   {Sparrow-}
@@ -454,6 +499,7 @@
   {Found in scrub jungle and grassland areas.}
   {Skulking habit, reveals presence by loud calls.}
   {Breeds June to September. Builds ball-shaped nest in grass clumps. Lays 3-5 greenish-white eggs.}
+  {jungle-prinia.jpg}
 
 \birdentry{House Sparrow}{\textit{Passer domesticus}}
   {Sparrow}
@@ -462,6 +508,7 @@
   {Common around buildings and human habitation.}
   {Gregarious, feeds mainly on grains and seeds.}
   {Breeds almost year-round. Nests in holes in buildings. Lays 4-6 white eggs with brown spots.}
+  {house-sparrow.jpg}
 
 \birdentry{House Crow}{\textit{Corvus splendens}}
   {Crow}
@@ -470,6 +517,7 @@
   {Abundant throughout campus, especially near human activity.}
   {Bold and opportunistic. Omnivorous diet.}
   {Breeds March to July. Builds platform nest in trees. Lays 4-5 pale blue-green eggs with brown spots.}
+  {house-crow.jpg}
 
 \birdentry{Spotted Owlet}{\textit{Athene brama}}
   {Myna+}
@@ -478,6 +526,7 @@
   {Found in wooded areas and gardens across campus.}
   {Active at dawn and dusk. Bobs head when alert. Feeds on insects, small vertebrates.}
   {Breeds February to April. Nests in tree hollows and old buildings. Lays 3-5 white eggs. Female incubates for 28-30 days while male provides food.}
+  {spotted-owlet.jpg}
 
 \birdentry{Indian Roller}{\textit{Coracias benghalensis}}
   {Myna++}
@@ -486,6 +535,7 @@
   {Found in open areas with scattered trees.}
   {Conspicuous percher, makes dramatic rolling display flights. Feeds on large insects, small lizards.}
   {Breeds March to July. Nests in tree hollows. Lays 3-5 white eggs. Both parents incubate for about 17-19 days.}
+  {indian-roller.jpg}
 
 \birdentry{Black-headed Cuckoo-shrike}{\textit{Coracina melanoptera}}
   {Myna+}
@@ -494,6 +544,7 @@
   {Found in wooded areas and gardens.}
   {Methodically searches foliage for insects. Often joins mixed hunting parties.}
   {Breeds April to July. Builds small cup nest on horizontal branch. Lays 2-3 grey-green eggs with brown spots.}
+  {black-headed-cuckoo-shrike.jpg}
 
 \birdentry{Small Minivet}{\textit{Pericrocotus cinnamomeus}}
   {Sparrow}
@@ -502,6 +553,7 @@
   {Found in wooded areas throughout campus.}
   {Active, moves through canopy in small groups. Sweet whistling calls.}
   {Breeds March to June. Builds tiny cup nest in tree fork. Lays 2-4 pale green eggs with brown spots.}
+  {small-minivet.jpg}
 
 \birdentry{Tickell's Flowerpecker}{\textit{Dicaeum erythrorhynchos}}
   {Sparrow--}
@@ -510,6 +562,7 @@
   {Found wherever flowering and fruiting trees occur.}
   {Very active, flits rapidly between flowers. Feeds on berries and nectar.}
   {Breeds year-round, peak March to May. Builds pear-shaped hanging nest. Lays 2-3 white eggs. Both parents care for young.}
+  {tickells-flowerpecker.jpg}
 
 \chapter*{Index of Latin Names}
 \addcontentsline{toc}{chapter}{Index of Latin Names}
