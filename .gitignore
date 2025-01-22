@@ -1,0 +1,44 @@
+# Images directory
+images/
+
+# LaTeX auxiliary files
+*.aux
+*.lof
+*.log
+*.lot
+*.fls
+*.out
+*.toc
+*.fmt
+*.fot
+*.cb
+*.cb2
+*.ptc
+*.idx
+*.ind
+*.ilg
+*.bbl
+*.bcf
+*.blg
+*.run.xml
+*.synctex
+*.synctex(busy)
+*.synctex.gz
+*.synctex.gz(busy)
+*.pdfsync
+
+# LaTeX Beamer
+*.nav
+*.pre
+*.snm
+*.vrb
+
+# Editor/IDE files
+.vscode/
+*~
+*.bak
+*.swp
+
+# Build directories
+build/
+dist/

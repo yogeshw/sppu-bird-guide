@@ -1,20 +1,131 @@
-\documentclass[a5paper,12pt]{memoir}
+\documentclass[a4paper,12pt,landscape]{memoir}
 \usepackage{geometry}
 \usepackage{graphicx}
-\usepackage{fontspec}
+\graphicspath{{../images/}}
+\usepackage{times}      % For Times New Roman-like font
+\usepackage{helvet}     % For Arial-like font
 \usepackage{xcolor}
 \usepackage{hyperref}
+\usepackage{mdframed}
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathmorphing}
+\usepackage{makeidx}
+\makeindex
 
-% Set page size to A5
-\geometry{a5paper}
+% Update geometry settings for A4 landscape with two A5 pages
+\geometry{
+  a4paper,
+  landscape,
+  left=1cm,
+  right=1cm,
+  top=2cm,
+  bottom=2cm,
+  includehead
+}
 
-% Set fonts
-\setmainfont{Times New Roman}
-\setsansfont{Arial}
+% Font configuration
+\newcommand{\headfont}{\sffamily\bfseries}  % Define headfont command first
+\renewcommand{\familydefault}{\rmdefault}    % Times New Roman-like font as default
+
+% Chapter and section styling
+\chapterstyle{bianchi}
+\setsecheadstyle{\headfont\color{headingcolor}\Large}
+\setsubsecheadstyle{\headfont\color{headingcolor}}
 
 % Define color scheme
 \definecolor{headingcolor}{RGB}{34, 139, 34} % Forest Green
 \definecolor{highlightcolor}{RGB}{139, 69, 19} % Saddle Brown
+
+% Define command for missing images
+\newcommand{\missingimage}[1]{%
+  \framebox[0.4\textwidth]{%
+    \parbox{0.35\textwidth}{%
+      \centering
+      Image placeholder\\
+      #1%
+    }%
+  }%
+}
+
+% Helper command to convert spaces and capitals to dashes and lowercase
+\usepackage{xstring}
+\newcommand{\formatimagefilename}[1]{%
+  \lowercase{\StrSubstitute{#1}{ }{-}}%
+}
+
+% Update bird entry template with new image handling
+\newcommand{\birdentry}[8]{%
+  \index{#2@\textit{#2}}
+  \begin{minipage}[t]{0.48\textwidth}
+    \begin{mdframed}[
+      linecolor=highlightcolor,
+      linewidth=1pt,
+      roundcorner=5pt,
+      leftmargin=0pt,
+      rightmargin=0pt
+    ]
+      \begin{center}
+      \IfFileExists{../images/\formatimagefilename{#1}.jpg}
+        {\includegraphics[width=0.95\textwidth,height=0.8\textheight,keepaspectratio]{../images/\formatimagefilename{#1}.jpg}}
+        {\missingimage{#1}}
+      \end{center}
+    \end{mdframed}
+  \end{minipage}\hfill
+  \begin{minipage}[t]{0.48\textwidth}
+    \section*{#1 (#2)}
+    \begin{mdframed}[
+      linecolor=headingcolor,
+      linewidth=1pt,
+      roundcorner=5pt,
+      leftmargin=0pt,
+      rightmargin=0pt,
+      backgroundcolor=headingcolor!5
+    ]
+      {\sffamily\bfseries Size:} #3 \\[0.5em]
+      {\sffamily\bfseries Status:} #4 \\[0.5em]
+      {\sffamily\bfseries Field characters:} #5 \\[0.5em]
+      {\sffamily\bfseries Distribution:} #6 \\[0.5em]
+      {\sffamily\bfseries Habits:} #7 \\[0.5em]
+      {\sffamily\bfseries Nesting:} #8
+    \end{mdframed}
+  \end{minipage}
+  \newpage
+}
+
+% Update introduction section command similarly
+\newcommand{\introsection}[2]{%
+  \begin{minipage}[t]{0.48\textwidth}
+    \begin{mdframed}[
+      linecolor=headingcolor,
+      linewidth=1pt,
+      roundcorner=5pt,
+      leftmargin=0pt,
+      rightmargin=0pt,
+      backgroundcolor=headingcolor!5
+    ]
+      #1
+    \end{mdframed}
+  \end{minipage}\hfill
+  \begin{minipage}[t]{0.48\textwidth}
+    \begin{mdframed}[
+      linecolor=headingcolor,
+      linewidth=1pt,
+      roundcorner=5pt,
+      leftmargin=0pt,
+      rightmargin=0pt,
+      backgroundcolor=headingcolor!5
+    ]
+      #2
+    \end{mdframed}
+  \end{minipage}
+  \newpage
+}
+
+% Page style
+\makepagestyle{birdguide}
+\makeevenhead{birdguide}{\thepage}{}{}
+\makeoddhead{birdguide}{}{}{\thepage}
+\pagestyle{birdguide}
 
 % Title page
 \title{Birds of the University of Pune}
@@ -30,100 +141,378 @@
 
 % Descriptive information
 \chapter*{Introduction}
-This bird guide provides information about the birds found at the University of Pune. The guide includes a photo of each bird and accompanying text similar to the content in the book of Indian birds available at \href{https://archive.org/download/BookOfIndianBirds/BookIndianBirds.pdf}{Book of Indian Birds}. The bird names have been updated according to the document at \href{https://indianbirds.in/pdfs/IB_11_5_6_Final.pdf}{Indian Birds}.
+
+\introsection{%
+  The University of Pune (Savitribai Phule Pune University) campus is a biodiversity hotspot spread across 411 acres (166.33 hectares) in the heart of Pune city. Located at 18.5529°N 73.8352°E, the campus sits at an elevation of approximately 560 meters above sea level.
+
+  \section*{Campus Environment}
+  The campus features diverse habitats that support a rich variety of birdlife. The landscape includes extensive wooded areas with native and exotic tree species, open grasslands, lawns, artificial water bodies, gardens, and building complexes. This mosaic of habitats provides excellent opportunities for both resident and migratory birds.
+
+  \section*{Flora and Vegetation}
+  The university grounds host over 150 species of trees, creating a veritable urban forest. Native species like Banyan (\textit{Ficus benghalensis}), Peepal (\textit{Ficus religiosa}), and Neem (\textit{Azadirachta indica}) dominate the landscape, while ornamental and introduced species add to the diversity. This rich vegetation provides vital nesting sites, roosting areas, and food sources for various bird species.
+}{%
+  \section*{Water Resources}
+  Water bodies on campus play a crucial role in supporting bird populations. These include:
+  \begin{itemize}
+  \item A large artificial reservoir that serves as the main campus lake
+  \item Several small ponds and water features scattered throughout the grounds
+  \item Seasonal water accumulations during the monsoon period
+  \end{itemize}
+
+  \section*{Human Impact}
+  The campus ecosystem faces various anthropogenic pressures that affect bird populations:
+  \begin{itemize}
+  \item Regular vehicular movement along campus roads
+  \item Ongoing construction and development activities
+  \item Presence of a large student population (over 40,000)
+  \item Regular maintenance activities including gardening and landscaping
+  \item Noise pollution from nearby urban areas
+  \item Light pollution from campus buildings and facilities
+  \end{itemize}
+}
+
+\introsection{%
+  \section*{Conservation Efforts}
+  The university administration has implemented several measures to protect and enhance campus biodiversity:
+  \begin{itemize}
+  \item Establishment of designated quiet zones
+  \item Protection of wooded areas and mature trees
+  \item Restricted access to sensitive wildlife habitats
+  \item Regular monitoring of bird populations
+  \item Environmental awareness programs for students and staff
+  \end{itemize}
+}{%
+  \section*{About This Guide}
+  This field guide documents the diverse bird species found within the university campus. Each entry includes detailed information about the bird's appearance, behavior, and habitat preferences, accompanied by high-quality photographs. The nomenclature follows current taxonomic standards, with references to the comprehensive Book of Indian Birds (\href{https://archive.org/download/BookOfIndianBirds/BookIndianBirds.pdf}{available online}) and updates from \href{https://indianbirds.in/pdfs/IB_11_5_6_Final.pdf}{Indian Birds} journal.
+}
+
+\vspace{1cm}
 
 % Bird sections
 \chapter{Birds}
 
-\section*{Milvus migrans (Brown Kite)}
-\textbf{Name:} Brown Kite \\
-\textbf{Size:} Large (similar to a vulture) \\
-\textbf{Field characters:} A large bird of prey with a distinctive forked tail and long wings. The plumage is mostly brown with lighter underparts. \\
-\textbf{Distribution:} Found throughout the Indian subcontinent, including the University of Pune campus. \\
-\textbf{Habits:} Often seen soaring high in the sky, searching for prey. Feeds on small mammals, birds, and carrion. \\
-\textbf{Nesting:} Builds nests in tall trees, using sticks and other plant materials. \\
-\begin{flushright}
-\includegraphics[width=0.4\textwidth]{https://via.placeholder.com/150}
-\end{flushright}
+\birdentry{Brown Kite}{\textit{Milvus migrans}}
+  {Kite size}
+  {Very common resident}
+  {A large bird of prey with a distinctive forked tail and long wings. The plumage is mostly brown with lighter underparts.}
+  {Found throughout the Indian subcontinent, including the University of Pune campus.}
+  {Often seen soaring high in the sky, searching for prey. Feeds on small mammals, birds, and carrion.}
+  {Breeds December to April. Builds nests in tall trees, using sticks and other plant materials. Lays 2-3 whitish eggs with brown spots. Both parents incubate for about 30 days and care for young.}
 
-\newpage
+\birdentry{Shikra}{\textit{Accipiter badius}}
+  {Myna+}
+  {Common resident}
+  {A small hawk with a distinctive red eye and a barred chest. The upperparts are gray, and the underparts are white with fine rufous barring.}
+  {Widely distributed across the Indian subcontinent, including the University of Pune campus.}
+  {Prefers wooded areas and gardens. Feeds on small birds, mammals, and insects.}
+  {Breeds March to July. Builds nests in trees, using twigs and leaves. Clutch of 3-4 pale bluish-white eggs. Female does most incubation for 28-30 days, male provides food.}
 
-\section*{Accipiter badius (Shikra)}
-\textbf{Name:} Shikra \\
-\textbf{Size:} Medium (similar to a myna) \\
-\textbf{Field characters:} A small hawk with a distinctive red eye and a barred chest. The upperparts are gray, and the underparts are white with fine rufous barring. \\
-\textbf{Distribution:} Widely distributed across the Indian subcontinent, including the University of Pune campus. \\
-\textbf{Habits:} Prefers wooded areas and gardens. Feeds on small birds, mammals, and insects. \\
-\textbf{Nesting:} Builds nests in trees, using twigs and leaves. \\
-\begin{flushright}
-\includegraphics[width=0.4\textwidth]{https://via.placeholder.com/150}
-\end{flushright}
+\birdentry{White-breasted Waterhen}{\textit{Amaurornis phoenicurus}}
+  {Bulbul+}
+  {Common resident}
+  {A medium-sized bird with a white face, throat, and breast, and a dark brown body. It has a distinctive red patch on the base of its bill.}
+  {Found throughout the Indian subcontinent, including the University of Pune campus.}
+  {Prefers marshy areas and wetlands. Feeds on insects, small fish, and plant matter.}
+  {Builds nests in dense vegetation near water, using plant materials. Lays 4-6 creamy white eggs with reddish-brown spots. Both parents share incubation duties for about 19-20 days and care for the chicks.}
 
-\newpage
+\birdentry{Indian Pond Heron}{\textit{Ardeola grayii}}
+  {Myna+}
+  {Very common resident}
+  {A medium-sized heron with a brownish body and white wings. It has a distinctive yellow bill and legs.}
+  {Found throughout the Indian subcontinent, including the University of Pune campus.}
+  {Prefers wetlands, ponds, and marshes. Feeds on fish, frogs, and insects.}
+  {Breeds June to September. Builds nests in trees or shrubs near water, using sticks and plant materials. Lays 3-5 pale blue-green eggs. Both parents incubate for about 18-24 days and feed the chicks.}
 
-\section*{Amaurornis phoenicurus (White-breasted Waterhen)}
-\textbf{Name:} White-breasted Waterhen \\
-\textbf{Size:} Medium (similar to a bulbul) \\
-\textbf{Field characters:} A medium-sized bird with a white face, throat, and breast, and a dark brown body. It has a distinctive red patch on the base of its bill. \\
-\textbf{Distribution:} Found throughout the Indian subcontinent, including the University of Pune campus. \\
-\textbf{Habits:} Prefers marshy areas and wetlands. Feeds on insects, small fish, and plant matter. \\
-\textbf{Nesting:} Builds nests in dense vegetation near water, using plant materials. \\
-\begin{flushright}
-\includegraphics[width=0.4\textwidth]{https://via.placeholder.com/150}
-\end{flushright}
+\birdentry{Black-crowned Night Heron}{\textit{Nycticorax nycticorax}}
+  {Crow+}
+  {Uncommon resident}
+  {A medium-sized heron with a black crown and back, gray wings, and white underparts. It has red eyes and a stout bill.}
+  {Found throughout the Indian subcontinent, including the University of Pune campus.}
+  {Prefers wetlands, ponds, and marshes. Feeds on fish, frogs, and insects.}
+  {Breeds June to September. Builds nests in trees or shrubs near water, using sticks and plant materials. Lays 3-5 pale blue-green eggs. Both parents incubate for about 24-26 days and care for the young.}
 
-\newpage
+\birdentry{Cattle Egret}{\textit{Bubulcus ibis}}
+  {Myna++}
+  {Very common resident}
+  {A medium-sized egret with white plumage and a yellow bill. During the breeding season, it develops orange-buff plumes on its head, chest, and back.}
+  {Found throughout the Indian subcontinent, including the University of Pune campus.}
+  {Often seen near cattle, feeding on insects and small animals disturbed by the grazing animals.}
+  {Breeds June to September during monsoon. Builds nests in colonies, using sticks and plant materials. Lays 3-4 pale blue eggs. Both parents incubate for about 23-26 days and feed the chicks.}
 
-\section*{Ardeola grayii (Indian Pond Heron)}
-\textbf{Name:} Indian Pond Heron \\
-\textbf{Size:} Medium (similar to a myna) \\
-\textbf{Field characters:} A medium-sized heron with a brownish body and white wings. It has a distinctive yellow bill and legs. \\
-\textbf{Distribution:} Found throughout the Indian subcontinent, including the University of Pune campus. \\
-\textbf{Habits:} Prefers wetlands, ponds, and marshes. Feeds on fish, frogs, and insects. \\
-\textbf{Nesting:} Builds nests in trees or shrubs near water, using sticks and plant materials. \\
-\begin{flushright}
-\includegraphics[width=0.4\textwidth]{https://via.placeholder.com/150}
-\end{flushright}
+\birdentry{Little Egret}{\textit{Egretta garzetta}}
+  {Myna++}
+  {Common resident}
+  {A medium-sized egret with white plumage, a black bill, and black legs with yellow feet. During the breeding season, it develops long, delicate plumes on its head, chest, and back.}
+  {Found throughout the Indian subcontinent, including the University of Pune campus.}
+  {Prefers wetlands, ponds, and marshes. Feeds on fish, frogs, and insects.}
+  {Breeds June to September. Builds nests in colonies, using sticks and plant materials. Lays 3-5 pale blue-green eggs. Both parents incubate for about 21-25 days and care for the young.}
 
-\newpage
+\birdentry{Blue Rock Pigeon}{\textit{Columba livia}}
+  {Myna+}
+  {Very common resident}
+  {A plump, grey-colored bird with iridescent neck feathers. Two dark wingbars and a dark terminal tail band are distinctive features.}
+  {Found throughout the Indian subcontinent, particularly abundant in urban areas including the University of Pune campus.}
+  {Highly adapted to urban life. Often seen in flocks, feeding on grains and seeds on the ground.}
+  {Breeds throughout the year. Nests in building ledges, window sills, and other artificial structures, using twigs and small sticks. Lays 2 white eggs. Both parents incubate for about 17-19 days and feed the chicks.}
 
-\section*{Nycticorax nycticorax (Black-crowned Night Heron)}
-\textbf{Name:} Black-crowned Night Heron \\
-\textbf{Size:} Medium (similar to a crow) \\
-\textbf{Field characters:} A medium-sized heron with a black crown and back, gray wings, and white underparts. It has red eyes and a stout bill. \\
-\textbf{Distribution:} Found throughout the Indian subcontinent, including the University of Pune campus. \\
-\textbf{Habits:} Prefers wetlands, ponds, and marshes. Feeds on fish, frogs, and insects. \\
-\textbf{Nesting:} Builds nests in trees or shrubs near water, using sticks and plant materials. \\
-\begin{flushright}
-\includegraphics[width=0.4\textwidth]{https://via.placeholder.com/150}
-\end{flushright}
+\birdentry{Spotted Dove}{\textit{Streptopelia chinensis}}
+  {Myna}
+  {Common resident}
+  {A slim, long-tailed dove with pinkish-grey plumage and distinctive black-and-white spotting on the nape.}
+  {Widespread across the campus and surrounding areas.}
+  {Usually seen in pairs or small groups, foraging on the ground for seeds and grains.}
+  {Builds a flimsy platform nest in trees and shrubs, often in dense foliage. Lays 2 white eggs. Both parents incubate for about 14-16 days and care for the chicks.}
 
-\newpage
+\birdentry{Little Brown Dove}{\textit{Streptopelia senegalensis}}
+  {Myna-}
+  {Common resident}
+  {A small, delicate dove with pale brown plumage and a lilac tinge to the neck. Black-and-red checkered pattern on neck sides.}
+  {Common throughout the campus, especially in open areas.}
+  {Often seen in pairs, feeding on seeds on the ground. Has a distinctive soft, musical call.}
+  {Creates simple twig nests in bushes and low trees. Lays 2 white eggs. Both parents incubate for about 13-15 days and feed the chicks.}
 
-\section*{Bubulcus ibis (Cattle Egret)}
-\textbf{Name:} Cattle Egret \\
-\textbf{Size:} Medium (similar to a myna) \\
-\textbf{Field characters:} A medium-sized egret with white plumage and a yellow bill. During the breeding season, it develops orange-buff plumes on its head, chest, and back. \\
-\textbf{Distribution:} Found throughout the Indian subcontinent, including the University of Pune campus. \\
-\textbf{Habits:} Often seen near cattle, feeding on insects and small animals disturbed by the grazing animals. \\
-\textbf{Nesting:} Builds nests in colonies, using sticks and plant materials. \\
-\begin{flushright}
-\includegraphics[width=0.4\textwidth]{https://via.placeholder.com/150}
-\end{flushright}
+\birdentry{Red-wattled Lapwing}{\textit{Vanellus indicus}}
+  {Myna++}
+  {Common resident}
+  {A large plover with distinctive red wattles in front of the eyes. Brown wings, black head and breast, white face and underparts.}
+  {Found in open areas across the campus, particularly near water bodies.}
+  {Known for its alarm call "did-he-do-it". Active during day and night, feeds on insects and small invertebrates.}
+  {Nests on the ground in shallow scrapes, often on gravelly or rocky areas. Lays 3-4 olive-brown eggs with black spots. Both parents share incubation duties for about 28-30 days and care for the chicks.}
 
-\newpage
+\birdentry{Asian Koel}{\textit{Eudynamys scolopacea}}
+  {Crow-}
+  {Common resident}
+  {Male glossy black with red eyes; female brown with white spots, barred underneath. Sexual dimorphism prominent.}
+  {Common throughout the campus, especially in wooded areas.}
+  {Known for its distinctive "ku-oo" call. Parasitizes crows' nests. Feeds mainly on fruits and berries.}
+  {Brood parasite, lays eggs in nests of crows and other birds.}
 
-\section*{Egretta garzetta (Little Egret)}
-\textbf{Name:} Little Egret \\
-\textbf{Size:} Medium (similar to a myna) \\
-\textbf{Field characters:} A medium-sized egret with white plumage, a black bill, and black legs with yellow feet. During the breeding season, it develops long, delicate plumes on its head, chest, and back. \\
-\textbf{Distribution:} Found throughout the Indian subcontinent, including the University of Pune campus. \\
-\textbf{Habits:} Prefers wetlands, ponds, and marshes. Feeds on fish, frogs, and insects. \\
-\textbf{Nesting:} Builds nests in colonies, using sticks and plant materials. \\
-\begin{flushright}
-\includegraphics[width=0.4\textwidth]{https://via.placeholder.com/150}
-\end{flushright}
+\birdentry{Greater Coucal}{\textit{Centropus sinensis}}
+  {Crow}
+  {Common resident}
+  {Large, black bird with chestnut wings and long tail. Red eyes and curved black bill are distinctive.}
+  {Found in dense vegetation across the campus.}
+  {Skulking habit, often seen walking on ground. Deep booming calls. Feeds on insects, small vertebrates.}
+  {Builds a domed nest in dense vegetation, usually close to the ground. Lays 3-5 white eggs. Both parents share incubation duties for about 15-16 days and care for the chicks.}
 
-\newpage
+\birdentry{Rose-ringed Parakeet}{\textit{Psittacula krameri}}
+  {Myna++}
+  {Very common resident}
+  {Bright green parakeet with long tail. Males have pink and black neck ring, females lack this feature.}
+  {Abundant throughout the campus, especially in wooded areas.}
+  {Noisy, gregarious birds. Often seen in large flocks. Feeds on fruits, seeds, and grains.}
+  {Breeds December to May. Nests in tree hollows, often competing with other cavity-nesters. Lays 3-4 white eggs. Both parents incubate for about 22-24 days and feed the chicks.}
+
+\birdentry{Alexandrine Parakeet}{\textit{Psittacula eupatria}}
+  {Crow}
+  {Uncommon resident}
+  {Larger than Rose-ringed Parakeet, with massive red beak. Males have pink and black collar.}
+  {Found in wooded areas of the campus, less common than other parakeets.}
+  {Similar habits to Rose-ringed Parakeet but more wary. Feeds on fruits and seeds.}
+  {Nests in large tree cavities, preferring old growth trees. Lays 2-4 white eggs. Both parents incubate for about 23-26 days and care for the chicks.}
+
+\birdentry{Plum-headed Parakeet}{\textit{Psittacula cyanocephala}}
+  {Myna}
+  {Common resident}
+  {Male has purple-red head, female bluish-grey. Both have green body and yellow-tipped tail.}
+  {Regular visitor to wooded areas of the campus.}
+  {Usually in pairs or small flocks. More arboreal than other parakeets. Feeds mainly on fruits and seeds.}
+  {Nests in tree hollows, breeding season varies with location. Lays 3-4 white eggs. Both parents incubate for about 22-24 days and feed the chicks.}
+
+\birdentry{House Swift}{\textit{Apus affinis}}
+  {Myna-}
+  {Very common resident}
+  {Small swift with white rump and forked tail. Overall dark brown-black plumage.}
+  {Common throughout urban areas of the campus.}
+  {Aerial feeder, constantly on wing. Often seen in large groups swooping near buildings.}
+  {Colonial nester, builds mud nests under building eaves and bridges. Lays 2-3 white eggs. Both parents incubate for about 19-21 days and care for the chicks.}
+
+\birdentry{White-breasted Kingfisher}{\textit{Halcyon smyrnensis}}
+  {Myna+}
+  {Common resident}
+  {Large kingfisher with bright blue back, chocolate brown head, and white breast. Large red bill distinctive.}
+  {Found near water bodies and in gardens across campus.}
+  {Perches prominently, diving for prey. Feeds on fish, frogs, lizards, and large insects.}
+  {Breeds March to June. Nests in horizontal tunnels dug in earth banks. Lays 4-7 white eggs. Both parents share incubation duties for about 20-22 days and care for the chicks.}
+
+\birdentry{Coppersmith Barbet}{\textit{Megalaima haemacephala}}
+  {Bulbul+}
+  {Common resident}
+  {Small, green bird with crimson forehead and throat. Yellow eye-patch distinctive.}
+  {Found in wooded areas throughout the campus.}
+  {Known for its metallic 'tuk-tuk-tuk' call. Feeds mainly on fruits, especially figs.}
+  {Excavates nest holes in dead tree trunks or branches. Lays 2-4 white eggs. Both parents incubate for about 13-15 days and feed the chicks.}
+
+\birdentry{Dusky Crag Martin}{\textit{Hirundo concolor}}
+  {Sparrow-}
+  {Common resident}
+  {Small, dark brown martin with slightly forked tail. Uniform dusky plumage.}
+  {Found around buildings and rocky areas of campus.}
+  {Aerial feeder, catching insects in flight. Often seen gliding near buildings.}
+  {Builds cup-shaped mud nests on buildings and rock faces. Lays 2-3 white eggs. Both parents incubate for about 14-16 days and care for the chicks.}
+
+\birdentry{Barn Swallow}{\textit{Hirundo rustica}}
+  {Sparrow}
+  {Common winter visitor}
+  {Long, deeply forked tail. Blue-black above, rufous forehead and throat, pale underparts.}
+  {Winter visitor to campus, seen in open areas.}
+  {Graceful flier, catching insects on wing. Often perches on wires.}
+  {Does not breed on campus; winter visitor only.}
+
+\birdentry{Red-rumped Swallow}{\textit{Hirundo daurica}}
+  {Sparrow}
+  {Common resident}
+  {Similar to Barn Swallow but with rufous rump and shorter tail streamers.}
+  {Found throughout campus, especially near buildings.}
+  {Aerial feeder, often in mixed flocks with other swallows.}
+  {Builds bottle-shaped mud nests under structures. Lays 3-4 white eggs. Both parents incubate for about 14-16 days and care for the chicks.}
+
+\birdentry{Wire-tailed Swallow}{\textit{Hirundo smithii}}
+  {Sparrow}
+  {Common resident}
+  {Distinctive long wire-like tail streamers. Glossy blue-black above, white below.}
+  {Found near water bodies and open areas on campus.}
+  {Graceful flier, often perches on wires. Feeds on flying insects.}
+  {Builds cup-shaped mud nests under bridges and buildings. Lays 2-3 white eggs. Both parents incubate for about 14-16 days and care for the chicks.}
+
+\birdentry{Long-tailed Shrike}{\textit{Lanius schach}}
+  {Bulbul+}
+  {Common resident}
+  {Grey-brown above, whitish below with black mask through eye. Long graduated tail.}
+  {Found in open areas with scattered trees.}
+  {Hunts from prominent perches. Impales prey on thorns. Feeds on insects, lizards, and small birds.}
+  {Builds neat cup-shaped nest in thorny bushes. Lays 3-6 white eggs with brown spots. Both parents share incubation duties for about 15-16 days and care for the chicks.}
+
+\birdentry{Golden Oriole}{\textit{Oriolus oriolus}}
+  {Myna+}
+  {Common resident}
+  {Male bright yellow with black wings and tail; female duller greenish.}
+  {Found in wooded areas across campus.}
+  {Shy bird, keeps to canopy. Melodious flute-like calls. Feeds on fruits and insects.}
+  {Builds hammock-like nest suspended in tree fork. Lays 2-4 white eggs with reddish-brown spots. Both parents share incubation duties for about 14-16 days and care for the chicks.}
+
+\birdentry{Common Myna}{\textit{Acridotheres tristis}}
+  {Myna}
+  {Very common resident}
+  {Brown body with black head, yellow bill and legs. White wing patches visible in flight.}
+  {Abundant throughout campus in all habitats.}
+  {Bold, adaptable bird. Often in pairs or groups. Omnivorous diet.}
+  {Nests in holes in trees, buildings, and other structures. Lays 4-6 blue-green eggs. Both parents share incubation duties for about 13-15 days and care for the chicks.}
+
+\birdentry{Common Iora}{\textit{Aegithina tiphia}}
+  {Sparrow-}
+  {Common resident}
+  {Small bird with olive-green above, yellow below. Males black and yellow in breeding.}
+  {Found in wooded areas and gardens.}
+  {Active forager in foliage. Sweet calls. Feeds mainly on insects.}
+  {Builds small cup-shaped nest in tree fork. Lays 2-4 white eggs with reddish-brown spots. Both parents share incubation duties for about 14-16 days and care for the chicks.}
+
+\birdentry{Red-vented Bulbul}{\textit{Pycnonotus cafer}}
+  {Bulbul}
+  {Very common resident}
+  {Dark brown-black with scaled pattern, distinctive red vent and black crest.}
+  {Common throughout campus in all habitats.}
+  {Active and noisy. Often in pairs or small groups. Feeds on fruits and insects.}
+  {Breeds year-round, peak February to May. Builds cup-shaped nest in bushes and small trees. Lays 2-3 pinkish-white eggs with red-brown spots. Both parents incubate for 14 days and feed chicks.}
+
+\birdentry{Red-whiskered Bulbul}{\textit{Pycnonotus jocosus}}
+  {Bulbul}
+  {Common resident}
+  {Brown above, white below with distinctive red cheek patch and pointed black crest.}
+  {Found in wooded areas and gardens across campus.}
+  {Lively bird with pleasant calls. Often in pairs. Feeds on fruits and insects.}
+  {Builds neat cup-shaped nest in shrubs and small trees. Lays 2-3 pinkish-white eggs with red-brown spots. Both parents incubate for about 12-14 days and care for the chicks.}
+
+\birdentry{Large Grey Babbler}{\textit{Turdoides malcolmi}}
+  {Myna+}
+  {Common resident}
+  {Grey-brown bird with pale streaking. Long graduated tail and curved bill.}
+  {Found in open scrub and gardens across campus.}
+  {Lives in noisy groups. Forages on ground, flicking leaves. Feeds on insects and berries.}
+  {Breeds March to September. Builds untidy nest in thorny bushes. Lays 3-4 turquoise blue eggs. Group members help in nesting duties.}
+
+\birdentry{Tickell's Blue Flycatcher}{\textit{Muscicappa tickelliae}}
+  {Bulbul-}
+  {Common resident}
+  {Male bright blue above, rufous below. Female duller.}
+  {Found in wooded areas with good undergrowth.}
+  {Active bird, makes short flycatching sallies from perch. Sweet whistling calls.}
+  {Breeds April to July. Builds neat cup nest in tree hollow or cleft. Lays 3-4 pale eggs with brown spots.}
+
+\birdentry{Ashy Prinia}{\textit{Prinia socialis}}
+  {Sparrow-}
+  {Common resident}
+  {Ash-grey above, whitish below. Long graduated tail often held cocked.}
+  {Found in gardens and scrub throughout campus.}
+  {Active bird, moves through vegetation making harsh calls.}
+  {Breeds mainly June to September. Builds deep cup nest in grass or bushes. Lays 3-5 brick-red eggs.}
+
+\birdentry{Jungle Prinia}{\textit{Prinia sylvatica}}
+  {Sparrow-}
+  {Common resident}
+  {Grey-brown above, pale below. Darker than Ashy Prinia.}
+  {Found in scrub jungle and grassland areas.}
+  {Skulking habit, reveals presence by loud calls.}
+  {Breeds June to September. Builds ball-shaped nest in grass clumps. Lays 3-5 greenish-white eggs.}
+
+\birdentry{House Sparrow}{\textit{Passer domesticus}}
+  {Sparrow}
+  {Very common resident}
+  {Male grey-brown with black bib and chestnut nape; female plain brown.}
+  {Common around buildings and human habitation.}
+  {Gregarious, feeds mainly on grains and seeds.}
+  {Breeds almost year-round. Nests in holes in buildings. Lays 4-6 white eggs with brown spots.}
+
+\birdentry{House Crow}{\textit{Corvus splendens}}
+  {Crow}
+  {Very common resident}
+  {Grey and black crow with distinct grey neck collar.}
+  {Abundant throughout campus, especially near human activity.}
+  {Bold and opportunistic. Omnivorous diet.}
+  {Breeds March to July. Builds platform nest in trees. Lays 4-5 pale blue-green eggs with brown spots.}
+
+\birdentry{Spotted Owlet}{\textit{Athene brama}}
+  {Myna+}
+  {Common resident}
+  {Small, chunky owl with white spotting. Large yellow eyes and white eyebrows give it a stern expression.}
+  {Found in wooded areas and gardens across campus.}
+  {Active at dawn and dusk. Bobs head when alert. Feeds on insects, small vertebrates.}
+  {Breeds February to April. Nests in tree hollows and old buildings. Lays 3-5 white eggs. Female incubates for 28-30 days while male provides food.}
+
+\birdentry{Indian Roller}{\textit{Coracias benghalensis}}
+  {Myna++}
+  {Common resident}
+  {Crow-sized bird with brilliant blue wings and tail. Brown head and back.}
+  {Found in open areas with scattered trees.}
+  {Conspicuous percher, makes dramatic rolling display flights. Feeds on large insects, small lizards.}
+  {Breeds March to July. Nests in tree hollows. Lays 3-5 white eggs. Both parents incubate for about 17-19 days.}
+
+\birdentry{Black-headed Cuckoo-shrike}{\textit{Coracina melanoptera}}
+  {Myna+}
+  {Common resident}
+  {Male grey with black head; female grey with faint barring.}
+  {Found in wooded areas and gardens.}
+  {Methodically searches foliage for insects. Often joins mixed hunting parties.}
+  {Breeds April to July. Builds small cup nest on horizontal branch. Lays 2-3 grey-green eggs with brown spots.}
+
+\birdentry{Small Minivet}{\textit{Pericrocotus cinnamomeus}}
+  {Sparrow}
+  {Common resident}
+  {Male black and orange; female grey and yellow. Both have long tails.}
+  {Found in wooded areas throughout campus.}
+  {Active, moves through canopy in small groups. Sweet whistling calls.}
+  {Breeds March to June. Builds tiny cup nest in tree fork. Lays 2-4 pale green eggs with brown spots.}
+
+\birdentry{Tickell's Flowerpecker}{\textit{Dicaeum erythrorhynchos}}
+  {Sparrow--}
+  {Common resident}
+  {Tiny bird with grey-brown above, dirty white below. Short tail and curved bill.}
+  {Found wherever flowering and fruiting trees occur.}
+  {Very active, flits rapidly between flowers. Feeds on berries and nectar.}
+  {Breeds year-round, peak March to May. Builds pear-shaped hanging nest. Lays 2-3 white eggs. Both parents care for young.}
+
+\chapter*{Index of Latin Names}
+\addcontentsline{toc}{chapter}{Index of Latin Names}
+\printindex
 
 \end{document}
