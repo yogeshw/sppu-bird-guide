@@ -53,9 +53,34 @@
   \edef\creditfile{\stripext#1_credit.txt}%
 }
 
+% Add counter for birds
+\newcounter{birdnumber}
+\setcounter{birdnumber}{0}
+
+% Simple index commands without @ characters
+\makeatletter
+\newcommand{\indexnames}[2]{%
+  \index{\textit{#2}}% Latin name
+  \index{#1}% Full English name
+  \expandafter\makesurnameindex\expandafter{#1}% Surname, Firstname format
+}
+
+\newcommand{\makesurnameindex}[1]{%
+  \def\two##1 ##2\@nil{%
+    \ifx\relax##2\relax
+      \index{#1}%
+    \else
+      \index{##2, ##1}%
+    \fi
+  }%
+  \expandafter\two#1 \@nil
+}
+\makeatother
+
 % Update bird entry template to take explicit image filename
 \newcommand{\birdentry}[9]{%
-  \index{#2@\textit{#2}}
+  \stepcounter{birdnumber}%
+  \indexnames{#1}{#2}%
   \begin{minipage}[t]{0.48\textwidth}
     \begin{mdframed}[
       linecolor=highlightcolor,
@@ -78,7 +103,7 @@
     \end{mdframed}
   \end{minipage}\hfill
   \begin{minipage}[t]{0.48\textwidth}
-    \section*{#1 (#2)}
+    \section*{\thebirdnumber. #1 (#2)}%
     \begin{mdframed}[
       linecolor=headingcolor,
       linewidth=1pt,
@@ -429,6 +454,24 @@ All rights reserved.
   {Builds hammock-like nest suspended in tree fork. Lays 2-4 white eggs with reddish-brown spots. Both parents share incubation duties for about 14-16 days and care for the chicks.}
   {golden-oriole.jpg}
 
+\birdentry{Black Drongo}{\textit{Dicrurus macrocercus}}
+  {Myna+}
+  {Common resident}
+  {Glossy black bird with deeply forked tail. Strong hooked bill.}
+  {Found throughout campus in open areas with trees.}
+  {Bold and aggressive. Often seen chasing other birds. Excellent aerial hunter.}
+  {Breeds March to July. Builds cup nest in outer branches. Lays 3-5 pinkish eggs with red-brown spots.}
+  {black-drongo.jpg}
+
+\birdentry{Ashy Drongo}{\textit{Dicrurus leucophaeus}}
+  {Myna+}
+  {Winter visitor}
+  {Similar to Black Drongo but grey overall. Less deeply forked tail.}
+  {Winter visitor to wooded areas of campus.}
+  {Less aggressive than Black Drongo. Catches insects in air and from foliage.}
+  {Does not breed on campus; winter visitor only.}
+  {ashy-drongo.jpg}
+
 \birdentry{Common Myna}{\textit{Acridotheres tristis}}
   {Myna}
   {Very common resident}
@@ -438,14 +481,14 @@ All rights reserved.
   {Nests in holes in trees, buildings, and other structures. Lays 4-6 blue-green eggs. Both parents share incubation duties for about 13-15 days and care for the chicks.}
   {common-myna.jpg}
 
-\birdentry{Common Iora}{\textit{Aegithina tiphia}}
-  {Sparrow-}
+\birdentry{Oriental Magpie-Robin}{\textit{Copsychus saularis}}
+  {Bulbul}
   {Common resident}
-  {Small bird with olive-green above, yellow below. Males black and yellow in breeding.}
-  {Found in wooded areas and gardens.}
-  {Active forager in foliage. Sweet calls. Feeds mainly on insects.}
-  {Builds small cup-shaped nest in tree fork. Lays 2-4 white eggs with reddish-brown spots. Both parents share incubation duties for about 14-16 days and care for the chicks.}
-  {common-iora.jpg}
+  {Striking black and white plumage in male, greyer in female. Long tail often held upright.}
+  {Found throughout campus in wooded areas and gardens.}
+  {Bold and melodious songster. Feeds on insects and berries.}
+  {Breeds March to July. Nests in tree hollows and building holes. Lays 4-5 greenish-white eggs with brown spots.}
+  {oriental-magpie-robin.jpg}
 
 \birdentry{Red-vented Bulbul}{\textit{Pycnonotus cafer}}
   {Bulbul}
@@ -510,6 +553,42 @@ All rights reserved.
   {Breeds almost year-round. Nests in holes in buildings. Lays 4-6 white eggs with brown spots.}
   {house-sparrow.jpg}
 
+\birdentry{Baya Weaver}{\textit{Ploceus philippinus}}
+  {Sparrow}
+  {Common resident}
+  {Male bright yellow in breeding with brown back; female sparrow-like.}
+  {Found in grassland areas and reed beds on campus.}
+  {Colonial nester. Males build elaborate pendant nests. Feeds on grass seeds.}
+  {Breeds during monsoon. Males build multiple helmet-shaped nests. Lays 2-4 white eggs.}
+  {baya-weaver.jpg}
+
+\birdentry{Indian Robin}{\textit{Copsychus fulicatus}}
+  {Sparrow}
+  {Common resident}
+  {Male glossy black with white wing patches, female brown. Cocked tail characteristic.}
+  {Common in open areas and scrub throughout campus.}
+  {Active ground feeder, frequently flicks tail upward. Sweet songs and calls.}
+  {Breeds mainly March to September. Nests in holes in walls or ground. Lays 2-4 white eggs with brown spots.}
+  {indian-robin.jpg}
+
+\birdentry{Oriental White-eye}{\textit{Zosterops palpebrosus}}
+  {Sparrow-}
+  {Common resident}
+  {Tiny olive-green bird with distinctive white eye-ring. Yellow throat and undertail.}
+  {Found in wooded areas and gardens across campus.}
+  {Active and acrobatic. Moves in small flocks through foliage. Feeds on insects and nectar.}
+  {Breeds March to September. Builds neat cup nest in tree fork. Lays 2-4 pale blue eggs.}
+  {oriental-white-eye.jpg}
+
+\birdentry{Scaly-breasted Munia}{\textit{Lonchura punctulata}}
+  {Sparrow-}
+  {Common resident}
+  {Small brown finch with distinctive scaly pattern on breast. Short thick bill.}
+  {Found in grassy areas and scrub throughout campus.}
+  {Social, feeds in small flocks on grass seeds. Sweet twittering calls.}
+  {Breeds July to October. Builds large ball nest in thorny bushes. Lays 4-6 white eggs.}
+  {scaly-breasted-munia.jpg}
+
 \birdentry{House Crow}{\textit{Corvus splendens}}
   {Crow}
   {Very common resident}
@@ -518,6 +597,15 @@ All rights reserved.
   {Bold and opportunistic. Omnivorous diet.}
   {Breeds March to July. Builds platform nest in trees. Lays 4-5 pale blue-green eggs with brown spots.}
   {house-crow.jpg}
+
+\birdentry{Large-billed Crow}{\textit{Corvus macrorhynchos}}
+  {Crow+}
+  {Common resident}
+  {Larger than House Crow, all black with massive bill. More solitary habits.}
+  {Found in wooded areas of campus and surrounding regions.}
+  {More cautious than House Crow. Often seen singly or in pairs. Omnivorous diet.}
+  {Breeds March to June. Builds large platform nest high in trees. Lays 3-5 pale greenish eggs with brown spots.}
+  {large-billed-crow.jpg}
 
 \birdentry{Spotted Owlet}{\textit{Athene brama}}
   {Myna+}
@@ -564,8 +652,8 @@ All rights reserved.
   {Breeds year-round, peak March to May. Builds pear-shaped hanging nest. Lays 2-3 white eggs. Both parents care for young.}
   {tickells-flowerpecker.jpg}
 
-\chapter*{Index of Latin Names}
-\addcontentsline{toc}{chapter}{Index of Latin Names}
+\chapter*{Index}
+\addcontentsline{toc}{chapter}{Index}
 \printindex
 
 \end{document}
