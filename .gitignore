@@ -1,5 +1,6 @@
 # Images directory
 images/
+.venv/
 
 # LaTeX auxiliary files
 *.aux
