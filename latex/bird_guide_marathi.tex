@@ -1,43 +1,103 @@
+% Document class and core packages
 \documentclass[a4paper,12pt,landscape]{memoir}
 \usepackage{fontspec}
-
-% Simplified font configuration
-\setmainfont{Noto Serif Devanagari}
-
-% Simple Latin font for scientific names
-\newfontfamily{\latintext}{DejaVu Serif}[
-    Scale=MatchUppercase
-]
-
-% Remove all font options to avoid stack overflow
-\newfontfamily{\sectionfont}{Noto Serif Devanagari}[
-    Scale=1.2
-]
-
-\usepackage{geometry}
-\usepackage{graphicx}
-\graphicspath{{../images/}}
+\usepackage{unicode-math}
+\usepackage{polyglossia}
+\usepackage{microtype}
+\usepackage[noautomatic]{imakeidx}
+\usepackage{xparse}
 \usepackage{xcolor}
-\usepackage{hyperref}
 \usepackage{mdframed}
-\usepackage{tikz}
-\usetikzlibrary{decorations.pathmorphing}
-\usepackage{makeidx}
-\makeindex
+\usepackage{graphicx}
 
-\geometry{
-  a4paper,
-  landscape,
-  left=1cm,
-  right=1cm,
-  top=2cm,
-  bottom=2cm,
-  includehead
+% Configure index
+\makeindex[name=birdindex,title=सूची,columns=1,options=-s bird_guide_marathi.ist]
+
+% Define indexing commands
+\makeatletter
+\newcommand{\indexnames}[2]{%
+  \index[birdindex]{#1@{\devanagarifont #1}}% Devanagari name
+  \index[birdindex]{#2@{\latintext #2}}% Scientific name
 }
 
-\chapterstyle{bianchi}
-\setsecheadstyle{\sffamily\bfseries\color{headingcolor}\Large}
-\setsubsecheadstyle{\sffamily\bfseries\color{headingcolor}}
+\def\@idxitem{\par\hangindent 1em}
+\def\subitem{\par\hangindent 2em}
+\def\subsubitem{\par\hangindent 3em}
+\makeatother
+
+% Set index formatting
+\renewcommand{\indexname}{सूची}
+\renewcommand{\indexspace}{\vspace{10pt plus 2pt minus 3pt}}
+
+% Set default languages
+\setdefaultlanguage{marathi}
+\setotherlanguage{english}
+
+% Set up main Devanagari font with simpler configuration
+\setmainfont{Noto Serif Devanagari}[
+    Script=Devanagari,
+    Language=Marathi,
+    UprightFont=*-Regular,
+    BoldFont=*-Bold,
+    SlantedFont=*-Regular,  % Add this line
+    BoldSlantedFont=*-Bold, % Add this line
+    Scale=1.2,
+    Mapping=devanagarinumerals
+]
+
+% Set up Latin font for English text
+\newfontfamily{\latintext}[
+    Script=Latin,
+    UprightFont=NotoSerif-Regular,
+    BoldFont=NotoSerif-Bold,
+    ItalicFont=NotoSerif-Italic,
+    BoldItalicFont=NotoSerif-BoldItalic
+]{Noto Serif}
+
+% Explicitly set up Devanagari font family for headers and special text
+\newfontfamily{\devanagarifont}[
+    Script=Devanagari,
+    Language=Marathi,
+    UprightFont=*-Regular,
+    BoldFont=*-Bold,
+    Scale=1.2
+]{Noto Serif Devanagari}
+
+% Add Devanagari sans-serif font definition
+\newfontfamily{\devanagarifontsf}[
+    Script=Devanagari,
+    Language=Marathi,
+    UprightFont=*-Regular,
+    BoldFont=*-Bold,
+    Scale=1.2
+]{Noto Sans Devanagari}
+
+% Ensure proper font is loaded at start
+\AtBeginDocument{%
+    \devanagarifont
+    \raggedright  % Better for Devanagari text
+}
+
+% Set up bullet point symbol
+\newcommand{\devanagariitem}{{\devanagarifont ●}}
+\renewcommand{\labelitemi}{\devanagariitem}
+
+% Define sectionfont command before using it
+\newcommand{\sectionfont}{\devanagarifont}
+
+% Section font configuration
+\setsecheadstyle{{\devanagarifont\bfseries\color{headingcolor}\Large}}
+\setsubsecheadstyle{{\devanagarifont\bfseries\color{headingcolor}}}
+
+% Header font configuration
+\makepagestyle{birdguide}
+\makepsmarks{birdguide}{%
+  \let\ps@plain\ps@empty
+  \def\chaptermark##1{\markboth{##1}{}}%
+  \def\sectionmark##1{\markright{##1}}%
+}
+
+% Colors and other configurations remain unchanged
 \definecolor{headingcolor}{RGB}{34, 139, 34}
 \definecolor{highlightcolor}{RGB}{139, 69, 19}
 
@@ -56,23 +116,6 @@
 
 \newcounter{birdnumber}
 \setcounter{birdnumber}{0}
-
-\makeatletter
-\newcommand{\indexnames}[2]{%
-  \index{\textit{#2}}%
-  \index{#1}%
-  \expandafter\makesurnameindex\expandafter{#1}%
-}
-
-\newcommand{\makesurnameindex}[1]{%
-  \def\two##1 ##2\@nil{%
-    \ifx\relax##2\relax
-      % Surname/Firstname logic if desired
-    \fi
-  }%
-  \expandafter\two#1 \@nil
-}
-\makeatother
 
 % Update bird entry template to match bird_guide.tex
 \newcommand{\birdentry}[9]{%
@@ -100,7 +143,7 @@
     \end{mdframed}
   \end{minipage}\hfill
   \begin{minipage}[t]{0.48\textwidth}
-    {\sectionfont\bfseries\thebirdnumber. #1} {\latintext (#2)}%
+    {\devanagarifont\bfseries\thebirdnumber. #1} {\latintext (#2)}%
     \begin{mdframed}[
       linecolor=headingcolor,
       linewidth=1pt,
@@ -109,12 +152,12 @@
       rightmargin=0pt,
       backgroundcolor=headingcolor!5
     ]
-      {\sffamily\bfseries Size:} #3 \\[0.5em]
-      {\sffamily\bfseries Status:} #4 \\[0.5em]
-      {\sffamily\bfseries Field characters:} #5 \\[0.5em]
-      {\sffamily\bfseries Distribution:} #6 \\[0.5em]
-      {\sffamily\bfseries Habits:} #7 \\[0.5em]
-      {\sffamily\bfseries Nesting:} #8
+      {\latintext\bfseries Size:} #3 \\[0.5em]
+      {\latintext\bfseries Status:} #4 \\[0.5em]
+      {\latintext\bfseries Field characters:} #5 \\[0.5em]
+      {\latintext\bfseries Distribution:} #6 \\[0.5em]
+      {\latintext\bfseries Habits:} #7 \\[0.5em]
+      {\latintext\bfseries Nesting:} #8
     \end{mdframed}
   \end{minipage}
   \newpage
@@ -197,7 +240,7 @@
 \vspace{1cm}
 \chapter{पक्षी}
 
-\birdentry{काळा घार}{\textit{Milvus migrans}}
+\birdentry{काळी घार}{\textit{Milvus migrans}}
   {घारीएवढा}
   {अतिसामान्य रहिवासी}
   {मोठा शिकारी पक्षी, विशिष्ट काटेरी शेपटी आणि लांब पंख. पंख काळसर-तपकिरी, खालचा भाग फिकट.}
@@ -343,5 +386,6 @@
 
 \chapter*{अनुक्रमणिका}
 \addcontentsline{toc}{chapter}{अनुक्रमणिका}
-\printindex
+\indexprologue{}
+\printindex[birdindex]
 \end{document}
