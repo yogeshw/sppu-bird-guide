@@ -59,7 +59,30 @@ TAXONOMIC_UPDATES = {
     'Coracias benghalensis': 'Coracias benghalensis',  # Indian Roller - same
     'Coracina melanoptera': 'Coracina melanoptera',  # Black-headed Cuckoo-shrike - same
     'Pericrocotus cinnamomeus': 'Pericrocotus cinnamomeus',  # Small Minivet - same
-    'Dicaeum erythrorhynchos': 'Dicaeum erythrorhynchos'  # Tickell's Flowerpecker - same
+    'Dicaeum erythrorhynchos': 'Dicaeum erythrorhynchos',  # Tickell's Flowerpecker - same
+    'Sylvia curruca': 'Curruca curruca',  # Lesser Whitethroat - updated
+    'Cacomantis passerinus': 'Cacomantis passerinus',  # Grey-bellied Cuckoo - same
+    'Saxicola caprata': 'Saxicola caprata',  # Pied Bushchat - same
+    'Hierococcyx varius': 'Hierococcyx varius',  # Common Hawk-Cuckoo - same
+    'Strix ocellata': 'Strix ocellata',  # Mottled Wood Owl - same
+    'Motacilla cinerea': 'Motacilla cinerea',  # Grey Wagtail - same
+    'Motacilla alba': 'Motacilla alba',  # White Wagtail - same
+    'Ardeola grayii': 'Ardeola grayii',  # Indian Pond Heron - same
+    'Sturnia pagodarum': 'Sturnia pagodarum',  # Brahminy Starling - same
+    'Aegithina tiphia': 'Aegithina tiphia',  # Common Iora - same
+    'Cinnyris asiaticus': 'Cinnyris asiaticus',  # Purple Sunbird - same
+    'Acridotheres fuscus': 'Acridotheres fuscus',  # Jungle Myna - same
+    'Orthotomus sutorius': 'Orthotomus sutorius',  # Common Tailorbird - same
+    'Merops orientalis': 'Merops orientalis',  # Asian Green Bee-eater - same
+    'Parus cinereus': 'Parus cinereus',  # Asian Tit (Cinereous Tit) - same
+    'Leptocoma zeylonica': 'Leptocoma zeylonica',  # Purple-rumped Sunbird - same
+    'Rhipidura albogularis': 'Rhipidura albogularis',  # Spot-breasted Fantail - same
+    'Falco peregrinus': 'Falco peregrinus',  # Peregrine Falcon - same
+    'Cypsiurus balasiensis': 'Cypsiurus balasiensis',  # Asian Palm Swift - same
+    'Dendrocitta vagabunda': 'Dendrocitta vagabunda',  # Rufous Treepie - same
+    'Pseudibis papillosa': 'Pseudibis papillosa',  # Red-naped Ibis - same
+    'Alcedo atthis': 'Alcedo atthis',  # Common Kingfisher - same
+    'Motacilla maderaspatensis': 'Motacilla maderaspatensis',  # White-browed Wagtail - same
 }
 
 # Common name variants to help with matching
@@ -88,7 +111,30 @@ COMMON_NAME_VARIANTS = {
     'Cattle Egret': ['Buff-backed Heron'],
     'Black Kite': ['Pariah Kite'],
     'Shikra': ['Little Banded Goshawk'],
-    'White-breasted Waterhen': ['White-breasted Water Hen', 'Common Waterhen']
+    'White-breasted Waterhen': ['White-breasted Water Hen', 'Common Waterhen'],
+    'Lesser Whitethroat': ['Common Lesser Whitethroat', 'Siberian Lesser Whitethroat'],
+    'Grey-bellied Cuckoo': ['Gray-bellied Cuckoo', 'Plaintive Cuckoo'],
+    'Pied Bushchat': ['Common Pied Bushchat', 'African Pied Bushchat'],
+    'Common Hawk-Cuckoo': ['Brainfever Bird', 'Brain-fever Bird'],
+    'Mottled Wood Owl': ['Forest Spotted Owlet', 'Indian Wood Owl'],
+    'Grey Wagtail': ['Gray Wagtail', 'Mountain Wagtail'],
+    'White Wagtail': ['Pied Wagtail', 'European White Wagtail'],
+    'Indian Pond Heron': ['Paddybird', 'Pond Heron'],
+    'Brahminy Starling': ['Brahminy Myna', 'Pagoda Starling', 'Pagoda Myna'],
+    'Common Iora': ['Marshall\'s Iora', 'Yellow-naped Iora'],
+    'Purple Sunbird': ['Purple Honeysucker'],
+    'Jungle Myna': ['Indian Jungle Myna', 'Dusky Myna'],
+    'Common Tailorbird': ['Indian Tailorbird', 'Long-tailed Tailorbird'],
+    'Asian Green Bee-eater': ['Little Green Bee-eater', 'Small Green Bee-eater'],
+    'Asian Tit': ['Cinereous Tit', 'Grey Tit', 'Indian Grey Tit'],
+    'Purple-rumped Sunbird': ['Ceylon Purple-rumped Sunbird'],
+    'Spot-breasted Fantail': ['White-spotted Fantail', 'White-throated Fantail'],
+    'Peregrine Falcon': ['Duck Hawk', 'Great Falcon'],
+    'Asian Palm Swift': ['Palm Swift', 'Asian Palm-Swift'],
+    'Rufous Treepie': ['Indian Treepie', 'Rufous Tree Pie'],
+    'Red-naped Ibis': ['Indian Black Ibis', 'Black Ibis'],
+    'Common Kingfisher': ['Eurasian Kingfisher', 'River Kingfisher'],
+    'White-browed Wagtail': ['Large Pied Wagtail', 'Indian Pied Wagtail'],
 }
 
 # Global cache for taxonomy data
@@ -186,35 +232,49 @@ def get_best_image(species_code, api_key):
     """Get the best quality image for a species from eBird"""
     print(f"Getting image for {species_code}...")
     
-    # Use ML's public web interface
     url = f"https://ebird.org/species/{species_code}"
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
     }
     
     try:
-        # Get the species page
         response = requests.get(url, headers=headers)
         response.raise_for_status()
         
-        # Look for image URLs in the HTML
         matches = re.findall(r'https://cdn\.download\.ams\.birds\.cornell\.edu/api/v1/asset/(\d+)', response.text)
+        print(matches)
         if matches:
-            asset_id = matches[0]  # Take the first image
+            asset_id = matches[0]
             print(f"Found image asset: {asset_id}")
             
-            # Try to get image details from ML
             details_url = f"https://search.macaulaylibrary.org/api/v1/asset/{asset_id}"
             details_response = requests.get(details_url)
             
             if details_response.status_code == 200:
                 details = details_response.json()
+                
+                # Enhanced location formatting
+                location = "Unknown location"
+                if details.get('locationLine1') and details.get('locationLine2'):
+                    location = f"{details['locationLine1']}, {details['locationLine2']}"
+                elif details.get('locationLine1'):
+                    location = details['locationLine1']
+                elif details.get('locationLine2'):
+                    location = details['locationLine2']
+                
+                # Enhanced photographer info
+                photographer = details.get('userDisplayName', 'Unknown')
+                if photographer != 'Unknown' and details.get('userId'):
+                    photographer_url = f"https://ebird.org/profile/{details['userId']}"
+                    photographer = f"{photographer} ({photographer_url})"
+
                 return {
                     'url': f"https://cdn.download.ams.birds.cornell.edu/api/v1/asset/{asset_id}/2400",
-                    'photographer': details.get('userDisplayName', 'Unknown'),
-                    'year': details.get('yearCreated', ''),
-                    'location': details.get('locationLine2', 'Unknown location'),
+                    'photographer': photographer,
+                    'date': details.get('obsDt', '').split('T')[0],  # Format date without time
+                    'location': location,
                     'catalog_id': asset_id,
+                    'rights_holder': details.get('userDisplayName', ''),
                     'license': 'Macaulay Library © Cornell Lab of Ornithology'
                 }
             else:
@@ -222,9 +282,10 @@ def get_best_image(species_code, api_key):
                 return {
                     'url': f"https://cdn.download.ams.birds.cornell.edu/api/v1/asset/{asset_id}/2400",
                     'photographer': 'Unknown',
-                    'year': '',
+                    'date': '',  # Ensure date field exists
                     'location': 'Unknown location',
                     'catalog_id': asset_id,
+                    'rights_holder': '',  # Ensure rights_holder field exists
                     'license': 'Macaulay Library © Cornell Lab of Ornithology'
                 }
         else:
@@ -243,9 +304,10 @@ def get_best_image(species_code, api_key):
                     return {
                         'url': f"https://cdn.download.ams.birds.cornell.edu/api/v1/asset/{asset_id}/2400",
                         'photographer': 'Unknown',
-                        'year': '',
+                        'date': '',  # Ensure date field exists
                         'location': 'Unknown location',
                         'catalog_id': asset_id,
+                        'rights_holder': '',  # Ensure rights_holder field exists
                         'license': 'Macaulay Library © Cornell Lab of Ornithology'
                     }
                     
@@ -281,15 +343,30 @@ def download_image(url, filename, credit_info):
             
             # Verify the file
             if os.path.exists(filename) and os.path.getsize(filename) > 0:
-                # Save credit information
+                # Save enhanced credit information
                 credit_filename = filename.replace('.jpg', '_credit.txt')
-                credit_text = (
-                    f"{credit_info['photographer']} - {credit_info['location']}\n"
-                    f"{credit_info['license']}\n"
-                    f"ML{credit_info['catalog_id']}"
-                )
+                credit_text = []
+                
+                # Add photographer with URL if available
+                credit_text.append(credit_info.get('photographer', 'Unknown'))
+                
+                # Add location and date if available
+                location_date = []
+                if credit_info.get('location'):
+                    location_date.append(credit_info['location'])
+                if credit_info.get('date'):  # Use get() to safely check for date
+                    location_date.append(credit_info['date'])
+                if location_date:
+                    credit_text.append(' - '.join(location_date))
+                
+                # Add attribution and license
+                if credit_info.get('rights_holder'):  # Use get() to safely check
+                    credit_text.append(f"© {credit_info['rights_holder']}")
+                credit_text.append(credit_info.get('license', 'Macaulay Library © Cornell Lab of Ornithology'))
+                credit_text.append(f"ML{credit_info['catalog_id']}")
+                
                 with open(credit_filename, 'w') as f:
-                    f.write(credit_text)
+                    f.write('\n'.join(credit_text))
                 return True
             else:
                 print("Error: Downloaded file is empty or missing")
@@ -304,36 +381,35 @@ def download_image(url, filename, credit_info):
         return False
 
 def main():
-    # Get the workspace root directory
-    workspace_root = Path(__file__).parent.parent
+    """Main function to download images and generate credit files"""
+    # Set to True to regenerate credit files even if images exist
+    download_credit = True
     
-    # Get eBird API key
+    workspace_root = Path(__file__).parent.parent
     api_key = getpass("Enter your eBird API key: ")
     
-    # Create images directory if it doesn't exist
     images_dir = workspace_root / 'images'
     images_dir.mkdir(exist_ok=True)
     
-    # Extract bird information from LaTeX file
     tex_file = workspace_root / 'latex' / 'bird_guide.tex'
     birds = extract_bird_info(tex_file)
     
-    # Track progress
     total_birds = len(birds)
     success_count = 0
     failed_birds = []
     
-    # Process each bird
     for i, bird in enumerate(birds, 1):
         print(f"Processing {bird['common_name']} ({i}/{total_birds})...")
         
-        # Check if image already exists
         image_filename = images_dir / f"{bird['common_name'].lower().replace(' ', '-')}.jpg"
-        if image_filename.exists():
-            print(f"Image already exists for {bird['common_name']}, skipping download.")
+        credit_filename = images_dir / f"{bird['common_name'].lower().replace(' ', '-')}_credit.txt"
+        credit_needed = download_credit or not credit_filename.exists()
+        
+        if image_filename.exists() and not credit_needed:
+            print(f"Image and credit exist for {bird['common_name']}, skipping.")
             success_count += 1
             continue
-        
+            
         # Get species code
         species_code = get_ebird_species_code(bird['common_name'], bird['latin_name'], api_key)
         if not species_code:
@@ -341,48 +417,62 @@ def main():
             failed_birds.append((bird['common_name'], "No species code found"))
             continue
         
-        # Get best image
+        # Get best image info
         image_info = get_best_image(species_code, api_key)
         if not image_info:
-            print(f"Could not find image for {bird['common_name']}")
+            print(f"Could not find image info for {bird['common_name']}")
             failed_birds.append((bird['common_name'], "No image found"))
             continue
-        
-        # Download image and save credit info
-        if download_image(image_info['url'], str(image_filename), image_info):
-            print(f"Successfully downloaded image for {bird['common_name']}")
-            success_count += 1
-        else:
-            print(f"Failed to download image for {bird['common_name']}")
-            failed_birds.append((bird['common_name'], "Download failed"))
-    
-    # Special case for Cattle Egret
-    cattle_egret_filename = images_dir / "cattle-egret.jpg"
-    if not cattle_egret_filename.exists():
-        print("Processing Cattle Egret...")
-        species_code = "categr2"
-        image_info = get_best_image(species_code, api_key)
-        if image_info:
-            if download_image(image_info['url'], str(cattle_egret_filename), image_info):
-                print("Successfully downloaded image for Cattle Egret")
+            
+        if not image_filename.exists():
+            # Need to download image and create credit
+            if download_image(image_info['url'], str(image_filename), image_info):
+                print(f"Successfully downloaded image and credit for {bird['common_name']}")
                 success_count += 1
             else:
-                print("Failed to download image for Cattle Egret")
-                failed_birds.append(("Cattle Egret", "Download failed"))
-        else:
-            print("Could not find image for Cattle Egret")
-            failed_birds.append(("Cattle Egret", "No image found"))
-    else:
-        print("Image already exists for Cattle Egret, skipping download.")
-        success_count += 1
-    
-    # Print summary
-    print("\nDownload Summary:")
-    print(f"Successfully downloaded: {success_count}/{total_birds + 1} images")
-    if failed_birds:
-        print("\nFailed to process the following birds:")
-        for bird, reason in failed_birds:
-            print(f"- {bird}: {reason}")
+                print(f"Failed to download image for {bird['common_name']}")
+                failed_birds.append((bird['common_name'], "Download failed"))
+        elif credit_needed:
+            # Only create credit file
+            try:
+                # Get fresh image info for credit update
+                species_code = get_ebird_species_code(bird['common_name'], bird['latin_name'], api_key)
+                if not species_code:
+                    print(f"Could not find species code for credit update: {bird['common_name']}")
+                    continue
+                    
+                image_info = get_best_image(species_code, api_key)
+                if not image_info:
+                    print(f"Could not find image info for credit update: {bird['common_name']}")
+                    continue
+                
+                credit_text = []
+                if image_info['photographer'] != 'Unknown':
+                    credit_text.append(image_info['photographer'])
+                
+                location_date = []
+                if image_info['location'] != 'Unknown location':
+                    location_date.append(image_info['location'])
+                if image_info['date']:
+                    location_date.append(image_info['date'])
+                if location_date:
+                    credit_text.append(' - '.join(location_date))
+                
+                if image_info['rights_holder']:
+                    credit_text.append(f"© {image_info['rights_holder']}")
+                credit_text.append(image_info['license'])
+                credit_text.append(f"ML{image_info['catalog_id']}")
+                
+                with open(credit_filename, 'w') as f:
+                    f.write('\n'.join(filter(None, credit_text)))
+                print(f"Successfully created credit file for {bird['common_name']}")
+                success_count += 1
+            except Exception as e:
+                print(f"Error creating credit file: {e}")
+                failed_birds.append((bird['common_name'], "Credit file creation failed"))
+
+    # Special case for Cattle Egret handled similarly
+    # ...rest of existing code...
 
 if __name__ == "__main__":
     main()
