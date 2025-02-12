@@ -1,0 +1,91 @@
+body {
+  font-family: 'Noto Serif', 'Noto Serif Devanagari', serif;
+  max-width: 1200px;
+  margin: auto;
+  padding: 1em;
+  line-height: 1.5;
+}
+
+:lang(mr) { 
+  font-family: 'Noto Serif Devanagari', serif;
+}
+
+h1, h2, h3 {
+  color: #228B22;  /* Forest Green */
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Image and caption styling */
+.figure {
+    margin: 2em 0;
+    text-align: center;
+}
+
+.figure img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.figure .caption {
+    margin-top: 0.5em;
+    font-style: italic;
+    color: #666;
+}
+
+/* Two-column layout for bird entries */
+.bird-entry {
+    display: flex;
+    gap: 2em;
+    margin: 2em 0;
+    padding: 2em;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.bird-image {
+    flex: 1;
+    min-width: 300px;
+}
+
+.bird-info {
+    flex: 1;
+    min-width: 300px;
+}
+
+/* Enhanced image handling */
+.bird-photo {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.mdframed {
+    margin: 1em 0;
+    padding: 1em;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.mdframed img {
+    max-width: 100%;
+    height: auto;
+    margin: 1em auto;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .bird-entry {
+        flex-direction: column;
+    }
+}

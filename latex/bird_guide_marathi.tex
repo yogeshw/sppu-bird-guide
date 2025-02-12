@@ -14,10 +14,10 @@
 \geometry{
   a4paper,
   landscape,
-  left=0.5cm,
-  right=0.5cm,
-  top=1cm,
-  bottom=1.25cm,
+  left=1cm,
+  right=1cm,
+  top=1.5cm,
+  bottom=1.5cm,
   includehead
 }
 
@@ -40,9 +40,13 @@
 \renewcommand{\indexname}{सूची}
 \renewcommand{\indexspace}{\vspace{10pt plus 2pt minus 3pt}}
 
+
 % Set default languages
 \setdefaultlanguage{marathi}
 \setotherlanguage{english}
+
+\newfontfamily\latinfont{Latin Modern Roman}         % a font with a proper bullet glyph
+
 
 % Set up main Devanagari font with simpler configuration
 \setmainfont{Noto Serif Devanagari}[
@@ -91,7 +95,8 @@
 
 % Set up bullet point symbol
 \newcommand{\devanagariitem}{{\devanagarifont ●}}
-\renewcommand{\labelitemi}{\devanagariitem}
+%\renewcommand{\labelitemi}{\devanagariitem}
+\renewcommand{\labelitemi}{{\latinfont\textbullet}}
 
 % Define sectionfont command before using it
 \newcommand{\sectionfont}{\devanagarifont}
@@ -128,7 +133,6 @@
 \newcounter{birdnumber}
 \setcounter{birdnumber}{0}
 
-% Update bird entry template to match bird_guide.tex
 \newcommand{\birdentry}[9]{%
   \stepcounter{birdnumber}%
   \indexnames{#1}{#2}%
@@ -143,8 +147,8 @@
       \begin{center}
       \IfFileExists{../images/#9}{%
         \includegraphics[width=0.95\textwidth,height=0.8\textheight,keepaspectratio]
-        {../images/#9}%
-        \par\vspace{1em}% Changed from -1em to 1em to add more space
+        {../images/#9}
+        \par\vspace{1em}
         \getcreditname{#9}%
         \hfill{\small\em\latintext Credit: \input{../images/\creditfile}}%
       }{%
@@ -238,7 +242,7 @@
 {\large{\latintext \textcopyright} २०२५ योगेश वाडदेकर}
 \end{center}
 
-\tableofcontents
+%\tableofcontents
 
 \chapter*{परिचय}
 \introsection{%
@@ -266,11 +270,11 @@
   \end{itemize}
 }{%
   \section*{या मार्गदर्शिकेबद्दल}
-  या मार्गदर्शिकेत कॅम्पसमधील विविध पक्ष्यांची माहिती, त्यांच्या ओळखीची वैशिष्ट्ये, अधिवास, अन्नस्रोत आणि प्रजनन याविषयी तपशील आहे. नावे विद्यमान वर्गीकरणाप्रमाणे दिली असून, Book of Indian Birds आणि Indian Birds जर्नल येथील अद्यतनांचा आधार घेतला आहे.
+  या मार्गदर्शिकेत कॅम्पसमधील विविध पक्ष्यांची माहिती, त्यांच्या ओळखीची वैशिष्ट्ये, अधिवास, अन्नस्रोत आणि प्रजनन याविषयी तपशील आहे. नावे विद्यमान वर्गीकरणाप्रमाणे दिली असून, {\latintext Book of Indian Birds} आणि {\latintext Indian Birds} जर्नल येथील अद्यतनांचा आधार घेतला आहे.
 }
 
 \vspace{1cm}
-\chapter{पक्षी}
+%\chapter{पक्षी}
 
 \birdentry{काळी घार}{\textit{Milvus migrans}}
   {घारीएवढा}
@@ -902,8 +906,6 @@
   {वर्षभर प्रजनन. प्रवेशद्वारासह झोळीसारखे घरटे. २ हिरवट-पांढरी, तपकिरी ठिपक्यांची अंडी.}
   {purple-rumped-sunbird.jpg}
 
-\chapter*{अनुक्रमणिका}
-\addcontentsline{toc}{chapter}{अनुक्रमणिका}
 \indexprologue{}
 \printindex[birdindex]
 \end{document}
