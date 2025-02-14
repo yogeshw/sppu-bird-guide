@@ -1,51 +1,74 @@
-# Birds of the University of Pune
+# Birds of SPPU Campus
 
-This project aims to create a bird guide for the Birds of the University of Pune in both LaTeX and HTML formats. The guide will include a photo of each bird and accompanying text similar to the content in the book of Indian birds available at [Book of Indian Birds](https://archive.org/download/BookOfIndianBirds/BookIndianBirds.pdf). The LaTeX version will have an elegant design in terms of fonts and layout, with one bird per page, text on the left, and the bird photo on the right. The HTML version will always track the LaTeX version in content but will be a single file.
+This project aims to create a bird guide for the birds of the Savitribai Phule Pune University (SPPU) campus, available in both LaTeX and HTML formats.
+
+## Project Overview
+
+The guide includes:
+
+*   **High-Quality Images:** A photograph of each bird species.
+*   **Detailed Descriptions:** Text descriptions similar to those found in classic Indian bird guides.
+*   **Elegant LaTeX Design:** A visually appealing layout with one bird per page, text on the left, and the bird's photo on the right.
+*   **Single-File HTML Version:** A comprehensive, accessible HTML guide that mirrors the LaTeX content.
 
 ## Repository Structure
 
-- `latex/`: Contains all LaTeX-related files, including the main LaTeX document and additional resources such as images and style files.
-- `html/`: Contains all HTML-related files, including the main HTML document and additional resources such as images and stylesheets.
-- `scripts/`: Contains scripts used for converting LaTeX to HTML or other automation tasks.
-- `data/`: Contains data files, such as the list of birds and their descriptions.
-- `docs/`: Contains documentation related to the project, such as instructions for contributors and usage guidelines.
-- `images/`: Contains images of the birds. Both the LaTeX and HTML versions will use the same images.
+*   `latex/`: LaTeX source files, images, and style files.
+*   `html/`: HTML output and related resources (CSS, images).
+*   `scripts/`: Conversion and automation scripts.
+*   `images/`: Bird images used in both LaTeX and HTML versions.
+*   `README.md`: This file.
 
 ## Instructions for Contributors
 
-1. Clone the repository:
-   ```
-   git clone https://github.com/githubnext/workspace-blank.git
-   cd workspace-blank
-   ```
+1.  **Clone the repository:**
 
-2. Create a new branch for your changes:
-   ```
-   git checkout -b your-branch-name
-   ```
+    ```bash
+    git clone <repository-url>
+    cd sppu-bird-guide
+    ```
+2.  **Create a new branch:**
 
-3. Make your changes and commit them:
-   ```
-   git add .
-   git commit -m "Description of your changes"
-   ```
+    ```bash
+    git checkout -b feature/new-bird-entry
+    ```
+3.  **Make changes:** Add content, correct errors, improve styling, etc.
+4.  **Commit your changes:**
 
-4. Push your changes to the remote repository:
-   ```
-   git push origin your-branch-name
-   ```
+    ```bash
+    git add .
+    git commit -m "Add new bird entry: <Bird Name>"
+    ```
+5.  **Push to your branch:**
 
-5. Create a pull request on GitHub.
+    ```bash
+    git push origin feature/new-bird-entry
+    ```
+6.  **Submit a pull request:** On GitHub, create a pull request from your branch to the `main` branch.
 
-## Converting LaTeX to HTML
+## Conversion Process (LaTeX to HTML)
 
-To convert the LaTeX document to HTML, use the `pandoc` tool. Follow these steps:
+The `scripts/convert_to_html.sh` script automates the conversion from LaTeX to HTML using Pandoc.
 
-1. Install `pandoc` if you haven't already. You can find installation instructions at [Pandoc Installation](https://pandoc.org/installing.html).
+1.  **Install Pandoc:** Follow the instructions at [https://pandoc.org/installing.html](https://pandoc.org/installing.html).
+2.  **Run the conversion script:**
 
-2. Run the conversion script:
-   ```
-   ./scripts/convert_to_html.sh
-   ```
+    ```bash
+    ./scripts/convert_to_html.sh
+    ```
 
-The script will generate an HTML file from the LaTeX source file, ensuring that the HTML version always tracks the LaTeX version in content.
+This script:
+
+*   Copies images to the `html/images` directory.
+*   Executes Pandoc with the necessary options to generate the HTML output.
+
+## Key Technologies
+
+*   **LaTeX:** Typesetting and document preparation.
+*   **Pandoc:** Document conversion.
+*   **Lua:** Scripting for Pandoc filters.
+*   **HTML/CSS:** Web presentation.
+
+## License
+
+This project is licensed under the [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-nc-sa/4.0/).
