@@ -1,7 +1,5 @@
 function Image(img)
-    -- Extract filename from path
-    local filename = img.src:match("[^/]*$") or img.src
-    img.src = "images/" .. filename:gsub("^%./", ""):gsub("^../images/", "")
+    img.src = img.src:gsub("^%.%./html/images/", "images/")
     return img
 end
 

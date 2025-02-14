@@ -1,5 +1,6 @@
 # Images directory
 images/
+html/images
 .venv/
 
 # LaTeX auxiliary files
