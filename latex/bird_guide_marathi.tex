@@ -10,6 +10,7 @@
 \usepackage{xcolor}
 \usepackage{mdframed}
 \usepackage{graphicx}
+\usepackage{hyperref}
 
 \geometry{
   a4paper,
@@ -54,8 +55,8 @@
     Language=Marathi,
     UprightFont=*-Regular,
     BoldFont=*-Bold,
-    SlantedFont=*-Regular,  % Add this line
-    BoldSlantedFont=*-Bold, % Add this line
+    SlantedFont=*-Regular,  
+    BoldSlantedFont=*-Bold, 
     Scale=1.2,
     Mapping=devanagarinumerals
 ]
@@ -66,8 +67,12 @@
     UprightFont=NotoSerif-Regular,
     BoldFont=NotoSerif-Bold,
     ItalicFont=NotoSerif-Italic,
-    BoldItalicFont=NotoSerif-BoldItalic
+    BoldItalicFont=NotoSerif-BoldItalic,
+    Scale=1.0
 ]{Noto Serif}
+
+% Add separate monospace font family
+\newfontfamily{\latinmono}{Noto Sans Mono}
 
 % Explicitly set up Devanagari font family for headers and special text
 \newfontfamily{\devanagarifont}[
@@ -236,44 +241,108 @@
 }
 
 \vspace{0.5cm}
-{\small अधिक माहितीसाठी भेट द्या: {\latintext{https://creativecommons.org/licenses/by-nc-sa/4.0/}}}
+{\small अधिक माहितीसाठी भेट द्या: {\latinmono https://creativecommons.org/licenses/by-nc-sa/4.0/}}
 
 \vspace{1cm}
+
 {\large{\latintext \textcopyright} २०२५ योगेश वाडदेकर}
 \end{center}
 
 %\tableofcontents
 
 \chapter*{परिचय}
+
 \introsection{%
   \section*{परिसराचा आढावा}
-  सावित्रीबाई फुले पुणे विद्यापीठ कॅम्पस हे पुण्याच्या मध्यभागी पसरलेले एक समृद्ध जैवविविधता क्षेत्र आहे. अंदाजे ४११ एकरांवर (१६६.३३ हेक्टर) व्यापलेल्या या परिसरात वृक्षराजी, गवताळ भाग, तळी आणि इमारती असा संमिश्र निसर्ग पाहायला मिळतो. 
+  सावित्रीबाई फुले पुणे विद्यापीठ ({\latintext SPPU}) कॅम्पस, शहराच्या मध्यभागी असलेले ४११ एकर (१६६.३३ हेक्टर) क्षेत्रफळ असलेले 
+  जैवविविधता हॉटस्पॉट आहे. {\latintext 18.5529°N 73.8352°E} अक्षांश-रेखांशावर, हा कॅम्पस समुद्रसपाटीपासून अंदाजे ५६० मीटर उंचीवर आहे.
 }{%
-  \section*{पाणस्रोत आणि माणसाचा प्रभाव}
-  कॅम्पसमधील पाण्याचे स्रोत पक्ष्यांसाठी महत्त्वाचे अधिवास तयार करतात:
+  \section*{कॅम्पसचे वातावरण}
+  कॅम्पसमध्ये विविध अधिवास आहेत, जे विविध प्रकारच्या पक्ष्यांसाठी उपयुक्त आहेत. या भूभागात मूळ आणि विदेशी झाडे, गवताळ प्रदेश, लॉन, कृत्रिम जलाशय,
+   बागा आणि इमारती आहेत. अधिवासांचे हे मिश्रण स्थानिक आणि स्थलांतरित पक्ष्यांसाठी उत्कृष्ट संधी प्रदान करते.
+}
+
+\introsection{%
+  \section*{वनस्पती आणि झाडी}
+  विद्यापीठाच्या परिसरात १५० हून अधिक प्रकारची झाडे आहेत, ज्यामुळे हे एक शहरी वन बनले आहे. 
+  वड ({\latintext \textit{Ficus benghalensis}}), पिंपळ ({\latintext \textit{Ficus religiosa}}), 
+  कडुलिंब ({\latintext\textit{Azadirachta indica}}) आणि काटेसावर  ({\latintext \textit{Bombax ceiba}}) 
+  यांसारख्या मूळ प्रजाती भूभागावर वर्चस्व गाजवतात, तर शोभेची आणि आयात केलेली झाडे जसे आफ्रिकन ब्लॅकवुड 
+  ({\latintext \textit{Dalbergia melanoxylon}}), रेन ट्री ({\latintext{}\textit{Samanea saman}}), गुलमोहर ({\latintext\textit{Delonix regia}}) 
+  आणि कॉपर पॉड ({\latintext \textit{Peltophorum pterocarpum}}) विविधतेत भर घालतात. ही समृद्ध वनस्पती विविध पक्षी प्रजातींसाठी आवश्यक घरटी बांधण्याची जागा, 
+  निवारा आणि अन्नाचे स्रोत पुरवते.
+}{%
+  \section*{मानवी हस्तक्षेप}
+  कॅम्पस परिसंस्थेवर विविध मानवी क्रियाकलापांचा दबाव आहे, ज्यामुळे पक्ष्यांच्या लोकसंख्येवर परिणाम होतो:
   \begin{itemize}
-  \item कृत्रिम तळे
-  \item लहान तळी आणि परिसरातले पाणी साठणारे भाग
-  \item पावसाळ्यात तयार होणारे नैसर्गिक पाणथळ भाग
+  \item कॅम्पस रस्त्यांवर नियमित वाहनांची वर्दळ
+  \item चालू असलेली बांधकाम आणि विकासकामे
+  \item मोठ्या संख्येने विद्यार्थ्यांची उपस्थिती
+  \item नियमित देखभाल क्रिया जसे बागकाम
+  \item शहरी भागातून येणारे आवाज आणि धूळ प्रदूषण
+  \item कॅम्पस इमारती आणि सुविधांमधून होणारे प्रकाश प्रदूषण
   \end{itemize}
 }
 
 \introsection{%
-  \section*{संवर्धन प्रयत्न}
-  विद्यापीठ प्रशासन कॅम्पसमधील जैवविविधता राखण्यासाठी खालील उपाययोजना राबवते:
+  \section*{कधी पाहावे}
+  \textbf{दिवसाची वेळ:}
   \begin{itemize}
-  \item शांत क्षेत्रांची निर्मिती
-  \item वृक्षाच्छादन आणि प्रौढ वृक्षांचे संवर्धन
-  \item संवेदनशील अधिवासांसाठी निर्बंधित प्रवेश
-  \item पक्षिजनगणना व सर्वेक्षण
-  \item विद्यार्थ्यांसाठी पर्यावरण जागरूकता कार्यक्रम
+  \item पहाटे (सकाळी ६:००-९:००): पक्षी नाश्त्यासाठी फिरत असल्याने सर्वाधिक क्रियाशील
+  \item दुपारनंतर (दुपारी ४:००-६:३०): दुसरी {\latintext Feeding} ची {\latintext activity}
+  \item मध्यान: {\latintext Thermal currents} वर उडणाऱ्या शिकारी पक्ष्यांना पाहण्यासाठी उत्तम
+  \item संध्याकाळ: घुबडांसारख्या निशाचर प्रजाती सक्रिय होण्याची उत्तम वेळ
+  \end{itemize}
+}{%
+  \section*{हंगामानुसार:}
+  \begin{itemize}
+  \item हिवाळा (नोव्हेंबर-फेब्रुवारी): अनेक हिवाळी पाहुण्यांमुळे सर्वोत्तम
+  \item पावसाळा (जून-सप्टेंबर): {\latintext Breeding activities} पाहण्यासाठी सर्वोत्तम
+  \item उन्हाळा (मार्च-मे): स्थानिक {\latintext Breeding birds} पाहण्यासाठी चांगला
+  \item पावसाळ्यानंतर (ऑक्टोबर): स्थलांतरित पक्षी शोधण्याची संधी
+  \end{itemize}
+}
+
+\introsection{%
+  \section*{आभार}
+  {\latintext SPPU} कॅम्पसमधील पक्ष्यांची नोंद eBird द्वारे ({\latintext
+  \href{https://ebird.org/hotspot/L1838309}{SPPU eBird Hotspot}})
+  करण्यात ज्या पक्षी निरीक्षकांनी योगदान दिले त्यांचे विशेष आभार.
+}{%
+  त्यांच्या पद्धतशीर नोंदीमुळे कॅम्पसमधील पक्ष्यांची विविधता आणि हंगामी बदल समजण्यास मदत झाली आहे.
+}
+
+\introsection{%
+  \section*{कसे पाहावे}
+  \textbf{आवश्यक उपकरणे:}
+  \begin{itemize}
+  \item दुर्बीण: नवशिक्यांसाठी {\latintext 8 X 42} किंवा {\latintext 10 X 42} उत्तम
+  \item {\latintext Field guide: Grimmett, Inskipp \& Inskipp} यांचे {\latintext \textit{Birds of the Indian Subcontinent}}
+  \item नोंदी घेण्यासाठी वही
+  \end{itemize}
+}{%
+  \section*{उपयुक्त ॲप्स:}
+  \begin{itemize}
+  \item {\latintext eBird}: नोंदी करण्यासाठी आणि हॉटस्पॉट एक्सप्लोर करण्यासाठी
+  \item {\latintext Merlin Bird ID}: फोटो किंवा आवाजावरून पक्षी ओळखण्यास मदत करते
+  \item {\latintext BirdNet}: {\latintext AI}-आधारित पक्ष्यांच्या आवाजाची ओळख
+  \end{itemize}
+}
+
+\introsection{%
+  \section*{अधिक टिप्स}
+  \begin{itemize}
+  \item आजूबाजूच्या वातावरणाशी जुळण्यासाठी माती रंगाचे कपडे वापरा
+  \item पक्ष्यांना त्रास होऊ नये म्हणून हळू आणि शांतपणे चाला
+  \item फ्लॅश फोटोग्राफी टाळा
+  \item घरटी आणि {\latintext Breeding areas} पासून सुरक्षित अंतर ठेवा
+  \item प्रत्येक {\latintext Session} नंतर {\latintext eBird} मध्ये आपल्या नोंदी रेकॉर्ड करा
   \end{itemize}
 }{%
   \section*{या मार्गदर्शिकेबद्दल}
-  या मार्गदर्शिकेत कॅम्पसमधील विविध पक्ष्यांची माहिती, त्यांच्या ओळखीची वैशिष्ट्ये, अधिवास, अन्नस्रोत आणि प्रजनन याविषयी तपशील आहे. नावे विद्यमान वर्गीकरणाप्रमाणे दिली असून, {\latintext Book of Indian Birds} आणि {\latintext Indian Birds} जर्नल येथील अद्यतनांचा आधार घेतला आहे.
+  या पुस्तिकेत विद्यापीठ परिसरात आढळणाऱ्या विविध पक्षी प्रजातींची माहिती आहे. कॅम्पसमध्ये नोंदवलेल्या पक्ष्यांच्या प्रजातींपैकी सर्वात सामान्य प्रजाती, ज्या सुमारे ७० आहेत, त्यांचा समावेश येथे केला आहे.
 }
 
-\vspace{1cm}
 %\chapter{पक्षी}
 
 \birdentry{घार}{\textit{Milvus migrans}}
@@ -477,7 +546,7 @@
 \birdentry{पांढऱ्या छातीचा धीवर}{\textit{Halcyon smyrnensis}}
   {मैनेपेक्षा मोठा}
   {सामान्य स्थानिक}
-  {मोठा खंड्या, चमकदार निळी पाठ, चॉकलेटी डोके व पांwhite-breasted-waterhen.jpgढरी छाती. मोठी लाल चोच ठळक.}
+  {मोठा खंड्या, चमकदार निळी पाठ, चॉकलेटी डोके व पांढरी छाती. मोठी लाल चोच ठळक.}
   {परिसरातील पाणवठे व बागा}
   {ठळकपणे बसून राहतो, शिकारीसाठी झडप घालतो. मासे, बेडूक, सरडे व मोठे कीटक खातो.}
   {मार्च ते जून प्रजनन. जमिनीच्या कडेत भुयार खणून घरटे. ४-७ पांढरी अंडी. दोन्ही पालक २०-२२ दिवस उबवतात.}
@@ -528,7 +597,7 @@
   {परिसरात प्रजनन करत नाही; फक्त हिवाळी पाहुणी.}
   {barn-swallow.jpg}
 
-\birdentry{लाल पुठूठ्याची भिंगरी}{\textit{Hirundo daurica}}
+\birdentry{लाल पुठ्ठ्याची भिंगरी}{\textit{Hirundo daurica}}
   {चिमणीएवढी}
   {सामान्य स्थानिक}
   {होलोखेल घारूळीसारखी पण तांबूस कंबर व छोट्या शेपटीची पिसे.}
@@ -615,7 +684,7 @@
   {नर काळा-पांढरा ठळक रंगसंगती, मादी अधिक करडी. लांब शेपटी वर धरतो.}
   {परिसरातील वृक्षराजी व बागांमध्ये सर्वत्र}
   {धीट व गोड आवाजी गायक. कीटक व बेरी खातो.}
-  {मार्च ते जुलै प्रजनन. झाडांच्या व इमारतींच्या पोकळीत घरटे. ४-५ हिरवट-पांwhite-breasted-waterhen.jpgढरी, तपकिरी ठिपक्यांची अंडी.}
+  {मार्च ते जुलै प्रजनन. झाडांच्या व इमारतींच्या पोकळीत घरटे. ४-५ हिरवट-पांढरी, तपकिरी ठिपक्यांची अंडी.}
   {oriental-magpie-robin.jpg}
 
 \birdentry{पांढऱ्या कंठाची नाचण}{\textit{Rhipidura albogularis}}
