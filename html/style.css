@@ -1,14 +1,11 @@
 body {
   font-family: 'Noto Serif', 'Noto Serif Devanagari', serif;
   line-height: 1.6;
-  margin: 0;
-  padding: 0;
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 2em;
   background-color: #f4f4f9;
   color: #333;
-}
-
-:lang(mr) { 
-  font-family: 'Noto Serif Devanagari', serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -28,33 +25,28 @@ h2 {
   padding-bottom: 0.3em;
 }
 
-h3 {
-  font-size: 1.75em;
+.minipage {
+  display: inline-block;
+  vertical-align: top;
+  width: 48%;
+  margin: 1%;
 }
 
-h4 {
-  font-size: 1.5em;
-}
-
-h5 {
-  font-size: 1.25em;
-}
-
-h6 {
-  font-size: 1em;
-}
-
-p {
-  margin: 0.5em 0;
-}
-
-ul, ol {
+.mdframed {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin: 1em 0;
-  padding-left: 1.5em;
+  padding: 1em;
 }
 
-li {
-  margin-bottom: 0.5em;
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+  display: block;
+  margin: 1em auto;
 }
 
 a {
@@ -66,131 +58,18 @@ a:hover {
   text-decoration: underline;
 }
 
-.container {
-  width: 80%;
-  margin: 0 auto;
-  padding: 2em 0;
-}
-
-.header {
-  background-color: #2c3e50;
-  color: white;
-  padding: 1em 0;
-  text-align: center;
-}
-
-.footer {
-  background-color: #2c3e50;
-  color: white;
-  padding: 1em 0;
-  text-align: center;
-  position: fixed;
-  width: 100%;
-  bottom: 0;
-}
-
-.card {
-  background-color: white;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin: 1em 0;
-  padding: 1em;
-}
-
-.card img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 5px;
-}
-
-.card h3 {
-  margin-top: 0;
-}
-
-.card p {
-  margin: 0.5em 0;
-}
-
-h1, h2, h3 {
-  color: #228B22;  /* Forest Green */
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-}
-
-/* Image and caption styling */
-.figure {
-    margin: 2em 0;
-    text-align: center;
-}
-
-.figure img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.figure .caption {
-    margin-top: 0.5em;
-    font-style: italic;
-    color: #666;
-}
-
-/* Two-column layout for bird entries */
-.bird-entry {
-    display: flex;
-    gap: 2em;
-    margin: 2em 0;
-    padding: 2em;
-    background: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.bird-image {
-    flex: 1;
-    min-width: 300px;
-}
-
-.bird-info {
-    flex: 1;
-    min-width: 300px;
-}
-
-/* Enhanced image handling */
-.bird-photo {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-.mdframed {
-    margin: 1em 0;
-    padding: 1em;
-    border-radius: 8px;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-}
-
-.mdframed img {
-    max-width: 100%;
-    height: auto;
-    margin: 1em auto;
-    display: block;
+.index {
+  column-count: 2;
+  column-gap: 2em;
 }
 
 @media (max-width: 768px) {
-    .bird-entry {
-        flex-direction: column;
-    }
-    .container {
-        width: 95%;
-    }
+  .minipage {
+    width: 100%;
+    margin: 1em 0;
+  }
+  
+  .index {
+    column-count: 1;
+  }
 }
