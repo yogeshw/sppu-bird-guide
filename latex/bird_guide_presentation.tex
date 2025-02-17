@@ -1,0 +1,816 @@
+\documentclass[aspectratio=169]{beamer}
+
+% Theme and color customization
+\usetheme{Madrid}
+\usecolortheme{owl}
+\setbeamercolor{normal text}{fg=white}
+\setbeamercolor{background canvas}{bg=black}
+\setbeamercolor{structure}{fg=white}
+\setbeamercolor{frametitle}{fg=white}
+\setbeamercolor{title}{fg=white}
+\setbeamercolor{section in toc}{fg=white}
+\setbeamertemplate{navigation symbols}{}
+
+% Required packages
+\usepackage{graphicx}
+\graphicspath{{../images/}}
+\usepackage{times}
+\usepackage{hyperref}
+
+% Define image credit command
+\newcommand{\imagecredit}[1]{%
+  \def\stripext##1.jpg{##1}%
+  \edef\creditfile{\stripext#1_credit.txt}%
+  {\scriptsize\em Credit: \input{../images/\creditfile}}%
+}
+
+\title{Birds of the University of Pune}
+\author{Yogesh Wadadekar}
+\institute{Savitribai Phule Pune University}
+\date{2025}
+
+\begin{document}
+
+\begin{frame}
+    \maketitle
+\end{frame}
+
+\begin{frame}{Campus Environment}
+    \begin{columns}[T]
+        \column{0.5\textwidth}
+        The University of Pune campus is a biodiversity hotspot spread across 411 acres in the heart of Pune city
+        \begin{itemize}
+            \item Located at 18.5529°N 73.8352°E
+            \item Elevation: 560m above sea level
+            \item Diverse habitats support rich birdlife
+            \item Includes wooded areas, grasslands, water bodies
+        \end{itemize}
+        \column{0.5\textwidth}
+        The campus hosts over 150 species of trees:
+        \begin{itemize}
+            \item Banyan (\textit{Ficus benghalensis})
+            \item Peepal (\textit{Ficus religiosa})
+            \item Neem (\textit{Azadirachta indica})
+            \item Red Silk Cotton (\textit{Bombax ceiba})
+            \item Many ornamental species
+        \end{itemize}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{When to Watch}
+    \begin{columns}[T]
+        \column{0.5\textwidth}
+        \textbf{Time of Day}
+        \begin{itemize}
+            \item Early morning (6:00-9:00 AM)
+            \item Late afternoon (4:00-6:30 PM)
+            \item Midday for raptors
+            \item Dusk for nocturnal species
+        \end{itemize}
+        \column{0.5\textwidth}
+        \textbf{Seasonal Highlights}
+        \begin{itemize}
+            \item Winter (November-February)
+            \item Monsoon (June-September)
+            \item Summer (March-May)
+            \item Post-monsoon (October)
+        \end{itemize}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{How to Watch}
+    \begin{columns}[T]
+        \column{0.5\textwidth}
+        \textbf{Essential Equipment}
+        \begin{itemize}
+            \item Binoculars (8x42 or 10x42)
+            \item Field guide
+            \item Notebook
+        \end{itemize}
+        \column{0.5\textwidth}
+        \textbf{Useful Apps}
+        \begin{itemize}
+            \item eBird
+            \item Merlin Bird ID
+            \item BirdNet
+        \end{itemize}
+    \end{columns}
+\end{frame}
+
+% Template for bird entries
+\newcommand{\birdslide}[9]{%
+\begin{frame}{#1 (\textit{#2})}
+    \begin{columns}[T]
+        \column{0.5\textwidth}
+        \includegraphics[width=\textwidth,height=0.7\textheight,keepaspectratio]{#9}
+        \imagecredit{#9}
+        \column{0.5\textwidth}
+        \textbf{Size:} #3 \\
+        \textbf{Status:} #4 \\[0.5em]
+        \textbf{Field characters:} #5 \\[0.5em]
+        \textbf{Best seen at:} #6 \\[0.5em]
+        \textbf{Habits:} #7 \\[0.5em]
+        \textbf{Nesting:} #8
+    \end{columns}
+\end{frame}
+}
+
+% Bird entries (organized by families)
+\section{Raptors}
+\birdslide{Black Kite}{\textit{Milvus migrans}}
+{Kite size}
+{Very common resident}
+{A large bird of prey with a distinctive forked tail and long wings. The plumage is mostly blackish-brown with lighter underparts.}
+{Found throughout the Indian subcontinent, including the University of Pune campus.}
+{Often seen soaring high in the sky, searching for prey. Feeds on small mammals, birds, and carrion.}
+{Breeds December to April. Builds nests in tall trees.}
+{black-kite.jpg}
+
+\birdslide{Red-naped Ibis}{\textit{Pseudibis papillosa}}
+{Kite-}
+{Common resident}
+{Large black bird with red patch on nape. Long curved bill and bare red patch on crown distinctive.}
+{Found in open areas, grasslands and waterbodies across campus.}
+{Walks deliberately while foraging. Usually in small groups. Probes soil for insects and small vertebrates.}
+{Breeds mainly during monsoon. Builds platform nest in large trees.}
+{red-naped-ibis.jpg}
+
+\birdslide{Peregrine Falcon}{\textit{Falco peregrinus}}
+{Kite-}
+{Uncommon winter visitor}
+{Large, powerful falcon with dark grey upperparts, barred underparts, and distinctive black 'moustache' marking.}
+{Occasionally seen around tall buildings and open areas of campus.}
+{Swift and agile hunter, known for spectacular aerial dives. Feeds mainly on birds caught in flight.}
+{Does not breed on campus; winter visitor only.}
+{peregrine-falcon.jpg}
+
+\birdslide{Shikra}{\textit{Accipiter badius}}
+{Myna+}
+{Common resident}
+{A small hawk with a distinctive red eye and a barred chest. The upperparts are gray, and the underparts are white with fine rufous barring.}
+{Widely distributed across the Indian subcontinent, including the University of Pune campus.}
+{Prefers wooded areas and gardens. Feeds on small birds, mammals, and insects.}
+{Breeds March to July. Builds nests in trees, using twigs and leaves.}
+{shikra.jpg}
+
+\section{Waterbirds}
+\birdslide{White-breasted Waterhen}{\textit{Amaurornis phoenicurus}}
+{Bulbul+}
+{Common resident}
+{A medium-sized bird with a white face, throat, and breast, and a dark brown body. Red patch on bill base.}
+{Found throughout the Indian subcontinent, in wetland areas.}
+{Prefers marshy areas and wetlands. Feeds on insects, small fish, and plant matter.}
+{Builds nests in dense vegetation near water.}
+{white-breasted-waterhen.jpg}
+
+\birdslide{Indian Pond Heron}{\textit{Ardeola grayii}}
+{Myna+}
+{Very common resident}
+{A medium-sized heron with a brownish body and white wings. It has a distinctive yellow bill and legs.}
+{Found throughout the Indian subcontinent, including the University of Pune campus.}
+{Prefers wetlands, ponds, and marshes. Feeds on fish, frogs, and insects.}
+{Breeds June to September. Builds nests in trees or shrubs near water.}
+{indian-pond-heron.jpg}
+
+\birdslide{Black-crowned Night Heron}{\textit{Nycticorax nycticorax}}
+{Crow+}
+{Uncommon resident}
+{A medium-sized heron with a black crown and back, gray wings, and white underparts. Red eyes.}
+{Found throughout the Indian subcontinent, including the University of Pune campus.}
+{Prefers wetlands, ponds, and marshes. Feeds on fish, frogs, and insects.}
+{Breeds June to September. Builds nests in trees or shrubs near water.}
+{black-crowned-night-heron.jpg}
+
+\birdslide{Cattle Egret}{\textit{Bubulcus ibis}}
+{Myna++}
+{Very common resident}
+{A medium-sized egret with white plumage and yellow bill. Develops orange-buff plumes in breeding.}
+{Found throughout the Indian subcontinent, including the University of Pune campus.}
+{Often seen near cattle, feeding on insects and small animals disturbed by grazing.}
+{Breeds June to September during monsoon. Builds nests in colonies.}
+{cattle-egret.jpg}
+
+\birdslide{Little Egret}{\textit{Egretta garzetta}}
+{Myna++}
+{Common resident}
+{A medium-sized egret with white plumage, black bill, and black legs with yellow feet.}
+{Found throughout the Indian subcontinent, including the University of Pune campus.}
+{Prefers wetlands, ponds, and marshes. Feeds on fish, frogs, and insects.}
+{Breeds June to September. Builds nests in colonies.}
+{little-egret.jpg}
+
+\section{Pigeons and Doves}
+\birdslide{Blue Rock Pigeon}{\textit{Columba livia}}
+{Myna+}
+{Very common resident}
+{A plump, grey-colored bird with iridescent neck feathers. Two dark wingbars.}
+{Found throughout the Indian subcontinent, particularly abundant in urban areas.}
+{Highly adapted to urban life. Often seen in flocks, feeding on grains and seeds.}
+{Breeds throughout the year. Nests in building ledges and structures.}
+{blue-rock-pigeon.jpg}
+
+\birdslide{Spotted Dove}{\textit{Streptopelia chinensis}}
+{Myna}
+{Common resident}
+{A slim, long-tailed dove with pinkish-grey plumage and distinctive black-and-white spotting.}
+{Widespread across the campus and surrounding areas.}
+{Usually seen in pairs or small groups, foraging on the ground for seeds.}
+{Builds a flimsy platform nest in trees and shrubs.}
+{spotted-dove.jpg}
+
+\birdslide{Little Brown Dove}{\textit{Streptopelia senegalensis}}
+{Myna-}
+{Common resident}
+{A small, delicate dove with pale brown plumage and lilac tinge to neck.}
+{Common throughout the campus, especially in open areas.}
+{Often seen in pairs, feeding on seeds on the ground. Soft, musical call.}
+{Creates simple twig nests in bushes and low trees.}
+{little-brown-dove.jpg}
+
+\section{Waders}
+\birdslide{Red-wattled Lapwing}{\textit{Vanellus indicus}}
+{Myna++}
+{Common resident}
+{A large plover with distinctive red wattles in front of eyes.}
+{Found in open areas across the campus, particularly near water bodies.}
+{Known for its alarm call "did-he-do-it". Active during day and night.}
+{Nests on the ground in shallow scrapes.}
+{red-wattled-lapwing.jpg}
+
+\section{Songbirds}
+\birdslide{Common Myna}{\textit{Acridotheres tristis}}
+{Myna}
+{Very common resident}
+{Brown body with black head, yellow bill and legs. White wing patches visible in flight.}
+{Abundant throughout campus in all habitats.}
+{Bold, adaptable bird. Often in pairs or groups. Omnivorous diet.}
+{Nests in holes in trees and buildings.}
+{common-myna.jpg}
+
+\section{Owls}
+\birdslide{Spotted Owlet}{\textit{Athene brama}}
+{Myna+}
+{Common resident}
+{Small, chunky owl with white spotting. Large yellow eyes and white eyebrows give it a stern expression.}
+{Found in wooded areas and gardens across campus.}
+{Active at dawn and dusk. Bobs head when alert. Feeds on insects, small vertebrates.}
+{Breeds February to April. Nests in tree hollows.}
+{spotted-owlet.jpg}
+
+\birdslide{Mottled Wood Owl}{\textit{Strix ocellata}}
+{Crow+}
+{Uncommon resident}
+{Large owl with distinctive mottled brown plumage. Round head without ear-tufts.}
+{Found in wooded areas of campus with dense canopy cover.}
+{Strictly nocturnal. Deep resonant calls at night. Feeds on rodents, birds, and large insects.}
+{Breeds December to March. Nests in tree hollows.}
+{mottled-wood-owl.jpg}
+
+\section{Woodpeckers and Barbets}
+\birdslide{Coppersmith Barbet}{\textit{Megalaima haemacephala}}
+{Bulbul+}
+{Common resident}
+{Small, green bird with crimson forehead and throat. Yellow eye-patch distinctive.}
+{Found in wooded areas throughout the campus.}
+{Known for its metallic 'tuk-tuk-tuk' call. Feeds mainly on fruits, especially figs.}
+{Excavates nest holes in dead tree trunks or branches.}
+{coppersmith-barbet.jpg}
+
+\section{Cuckoos and Coucals}
+\birdslide{Asian Koel}{\textit{Eudynamys scolopacea}}
+{Crow-}
+{Common resident}
+{Male glossy black with red eyes; female brown with white spots, barred underneath.}
+{Common throughout the campus, especially in wooded areas.}
+{Known for its distinctive "ku-oo" call. Parasitizes crows' nests.}
+{Brood parasite, lays eggs in nests of crows and other birds.}
+{asian-koel.jpg}
+
+\birdslide{Common Hawk-Cuckoo}{\textit{Hierococcyx varius}}
+{Myna++}
+{Common resident}
+{Hawk-like appearance with barred underparts. Yellow eye-ring.}
+{Found throughout wooded areas of campus.}
+{Known for distinctive "brain-fever" call. Feeds on insects and caterpillars.}
+{Brood parasite, primarily targeting babblers.}
+{common-hawk-cuckoo.jpg}
+
+\birdslide{Grey-bellied Cuckoo}{\textit{Cacomantis passerinus}}
+{Myna-}
+{Common summer visitor}
+{Grey bird with dark grey breast and pale belly. Yellow eye-ring distinctive.}
+{Found in wooded areas across campus.}
+{Rather secretive. Known for plaintive whistling calls. Feeds mainly on insects.}
+{Brood parasite, laying eggs in warblers' and tailorbirds' nests.}
+{grey-bellied-cuckoo.jpg}
+
+\birdslide{Greater Coucal}{\textit{Centropus sinensis}}
+{Crow}
+{Common resident}
+{Large, black bird with chestnut wings and long tail. Red eyes and curved black bill.}
+{Found in dense vegetation across the campus.}
+{Skulking habit, often seen walking on ground. Deep booming calls.}
+{Builds a domed nest in dense vegetation.}
+{greater-coucal.jpg}
+
+\section{Parakeets}
+\birdslide{Rose-ringed Parakeet}{\textit{Psittacula krameri}}
+{Myna++}
+{Very common resident}
+{Bright green parakeet with long tail. Males have pink and black neck ring.}
+{Abundant throughout the campus, especially in wooded areas.}
+{Noisy, gregarious birds. Often seen in large flocks.}
+{Breeds December to May. Nests in tree hollows.}
+{rose-ringed-parakeet.jpg}
+
+\birdslide{Alexandrine Parakeet}{\textit{Psittacula eupatria}}
+{Crow}
+{Uncommon resident}
+{Larger than Rose-ringed Parakeet, with massive red beak.}
+{Found in wooded areas of the campus, less common than other parakeets.}
+{Similar habits to Rose-ringed Parakeet but more wary.}
+{Nests in large tree cavities, preferring old growth trees.}
+{alexandrine-parakeet.jpg}
+
+\birdslide{Plum-headed Parakeet}{\textit{Psittacula cyanocephala}}
+{Myna}
+{Common resident}
+{Male has purple-red head, female bluish-grey. Both have green body.}
+{Regular visitor to wooded areas of the campus.}
+{Usually in pairs or small flocks. More arboreal than other parakeets.}
+{Nests in tree hollows, breeding season varies with location.}
+{plum-headed-parakeet.jpg}
+
+\section{Swifts}
+\birdslide{House Swift}{\textit{Apus affinis}}
+{Myna-}
+{Very common resident}
+{Small swift with white rump and forked tail. Dark brown-black plumage.}
+{Common throughout urban areas of the campus.}
+{Aerial feeder, constantly on wing. Often seen in large groups.}
+{Colonial nester, builds mud nests under building eaves.}
+{house-swift.jpg}
+
+\birdslide{Asian Palm Swift}{\textit{Cypsiurus balasiensis}}
+{Sparrow-}
+{Common resident}
+{Smaller than House Swift, slender with deeply forked tail.}
+{Found around palm trees across campus.}
+{Very fast flier, rarely perches. Often seen around palm trees.}
+{Breeds year-round. Attaches small nest to palm frond underside.}
+{asian-palm-swift.jpg}
+
+\section{Kingfishers}
+\birdslide{White-breasted Kingfisher}{\textit{Halcyon smyrnensis}}
+{Myna+}
+{Common resident}
+{Large kingfisher with bright blue back, chocolate brown head, white breast.}
+{Found near water bodies and in gardens across campus.}
+{Perches prominently, diving for prey. Feeds on fish, frogs, lizards.}
+{Breeds March to June. Nests in horizontal tunnels.}
+{white-breasted-kingfisher.jpg}
+
+\birdslide{Common Kingfisher}{\textit{Alcedo atthis}}
+{Bulbul-}
+{Common resident}
+{Small kingfisher with brilliant blue upperparts and orange underparts.}
+{Found near water bodies and ponds on campus.}
+{Perches low over water, dives vertically for fish.}
+{Breeds February to April. Nests in tunnel in earth bank.}
+{common-kingfisher.jpg}
+
+\section{Bee-eaters and Barbets}
+\birdslide{Asian Green Bee-eater}{\textit{Merops orientalis}}
+{Sparrow+}
+{Common resident}
+{Slender green bird with blue throat patch and black eye-stripe.}
+{Found in open areas with scattered trees across campus.}
+{Graceful aerial hunter, catches insects in flight.}
+{Breeds March to June. Nests in tunnels dug in earth banks.}
+{asian-green-bee-eater.jpg}
+
+\birdslide{Coppersmith Barbet}{\textit{Megalaima haemacephala}}
+{Bulbul+}
+{Common resident}
+{Small, green bird with crimson forehead and throat. Yellow eye-patch distinctive.}
+{Found in wooded areas throughout the campus.}
+{Known for its metallic 'tuk-tuk-tuk' call. Feeds mainly on fruits, especially figs.}
+{Excavates nest holes in dead tree trunks or branches.}
+{coppersmith-barbet.jpg}
+
+\section{Swallows and Martins}
+\birdslide{Dusky Crag Martin}{\textit{Hirundo concolor}}
+{Sparrow-}
+{Common resident}
+{Small, dark brown martin with slightly forked tail.}
+{Found around buildings and rocky areas of campus.}
+{Aerial feeder, catching insects in flight.}
+{Builds cup-shaped mud nests on buildings.}
+{dusky-crag-martin.jpg}
+
+\birdslide{Barn Swallow}{\textit{Hirundo rustica}}
+{Sparrow}
+{Common winter visitor}
+{Long, deeply forked tail. Blue-black above, rufous forehead and throat.}
+{Winter visitor to campus, seen in open areas.}
+{Graceful flier, catching insects on wing. Often perches on wires.}
+{Does not breed on campus; winter visitor only.}
+{barn-swallow.jpg}
+
+\birdslide{Red-rumped Swallow}{\textit{Hirundo daurica}}
+{Sparrow}
+{Common resident}
+{Similar to Barn Swallow but with rufous rump and shorter tail streamers.}
+{Found throughout campus, especially near buildings.}
+{Aerial feeder, often in mixed flocks with other swallows.}
+{Builds bottle-shaped mud nests under structures.}
+{red-rumped-swallow.jpg}
+
+\birdslide{Wire-tailed Swallow}{\textit{Hirundo smithii}}
+{Sparrow}
+{Common resident}
+{Distinctive long wire-like tail streamers. Glossy blue-black above.}
+{Found near water bodies and open areas on campus.}
+{Graceful flier, often perches on wires. Feeds on flying insects.}
+{Builds cup-shaped mud nests under bridges and buildings.}
+{wire-tailed-swallow.jpg}
+
+\section{Shrikes and Orioles}
+\birdslide{Long-tailed Shrike}{\textit{Lanius schach}}
+{Bulbul+}
+{Common resident}
+{Grey-brown above, whitish below with black mask through eye.}
+{Found in open areas with scattered trees.}
+{Hunts from prominent perches. Impales prey on thorns.}
+{Builds neat cup-shaped nest in thorny bushes.}
+{long-tailed-shrike.jpg}
+
+\birdslide{Golden Oriole}{\textit{Oriolus oriolus}}
+{Myna+}
+{Common resident}
+{Male bright yellow with black wings and tail; female duller greenish.}
+{Found in wooded areas across campus.}
+{Shy bird, keeps to canopy. Melodious flute-like calls.}
+{Builds hammock-like nest suspended in tree fork.}
+{golden-oriole.jpg}
+
+\section{Drongos}
+\birdslide{Black Drongo}{\textit{Dicrurus macrocercus}}
+{Myna+}
+{Common resident}
+{Glossy black bird with deeply forked tail. Strong hooked bill.}
+{Found throughout campus in open areas with trees.}
+{Bold and aggressive. Often seen chasing other birds. Excellent aerial hunter.}
+{Breeds March to July. Builds cup nest in outer branches.}
+{black-drongo.jpg}
+
+\birdslide{Ashy Drongo}{\textit{Dicrurus leucophaeus}}
+{Myna+}
+{Winter visitor}
+{Similar to Black Drongo but grey overall. Less deeply forked tail.}
+{Winter visitor to wooded areas of campus.}
+{Less aggressive than Black Drongo. Catches insects in air.}
+{Does not breed on campus; winter visitor only.}
+{ashy-drongo.jpg}
+
+\section{Mynas and Starlings}
+\birdslide{Common Myna}{\textit{Acridotheres tristis}}
+{Myna}
+{Very common resident}
+{Brown body with black head, yellow bill and legs. White wing patches visible in flight.}
+{Abundant throughout campus in all habitats.}
+{Bold, adaptable bird. Often in pairs or groups. Omnivorous diet.}
+{Nests in holes in trees and buildings.}
+{common-myna.jpg}
+
+\birdslide{Jungle Myna}{\textit{Acridotheres fuscus}}
+{Myna}
+{Common resident}
+{Similar to Common Myna but greyer, with tuft at base of bill.}
+{Found in wooded areas and gardens, less urban than Common Myna.}
+{Usually in pairs or small groups. More arboreal than Common Myna.}
+{Breeds March to July. Nests in tree holes.}
+{jungle-myna.jpg}
+
+\birdslide{Brahminy Starling}{\textit{Sturnia pagodarum}}
+{Myna}
+{Common resident}
+{Distinctive buff-colored starling with black crest, grey wings.}
+{Found in wooded areas and gardens across campus.}
+{Usually seen in pairs or small groups. Feeds on fruits and insects.}
+{Breeds April to July. Nests in tree holes.}
+{brahminy-starling.jpg}
+
+\section{Robins and Chats}
+\birdslide{Oriental Magpie-Robin}{\textit{Copsychus saularis}}
+{Bulbul}
+{Common resident}
+{Striking black and white plumage in male, greyer in female.}
+{Found throughout campus in wooded areas and gardens.}
+{Bold and melodious songster. Feeds on insects and berries.}
+{Breeds March to July. Nests in tree hollows.}
+{oriental-magpie-robin.jpg}
+
+\birdslide{Spot-breasted Fantail}{\textit{Rhipidura albogularis}}
+{Sparrow-}
+{Common resident}
+{Small black and white bird with spotted breast, white eyebrow.}
+{Found in wooded areas and gardens with good tree cover.}
+{Active and acrobatic, frequently fans tail while foraging.}
+{Breeds mainly March to September. Builds neat cup nest.}
+{spot-breasted-fantail.jpg}
+
+\birdslide{Pied Bushchat}{\textit{Saxicola caprata}}
+{Bulbul-}
+{Common resident}
+{Male black with white rump and wing patches; female brown.}
+{Found in open areas with scattered bushes across campus.}
+{Perches prominently on bushes and fences.}
+{Breeds March to August. Builds cup-shaped nest.}
+{pied-bushchat.jpg}
+
+\section{Sunbirds and Flowerpeckers}
+\birdslide{Purple Sunbird}{\textit{Cinnyris asiaticus}}
+{Sparrow--}
+{Common resident}
+{Male breeding metallic purple-black; non-breeding and female olive brown.}
+{Found throughout campus wherever flowering plants occur.}
+{Very active, hovers at flowers. Long curved bill for nectar feeding.}
+{Breeds mainly February to May. Builds hanging purse-like nest.}
+{purple-sunbird.jpg}
+
+\birdslide{Tickell's Flowerpecker}{\textit{Dicaeum erythrorhynchos}}
+{Sparrow--}
+{Common resident}
+{Tiny bird with grey-brown above, dirty white below. Short tail and curved bill.}
+{Found wherever flowering and fruiting trees occur.}
+{Very active, flits rapidly between flowers. Feeds on berries and nectar.}
+{Breeds year-round, builds pear-shaped hanging nest.}
+{tickells-flowerpecker.jpg}
+
+\section{Wagtails}
+\birdslide{Grey Wagtail}{\textit{Motacilla cinerea}}
+{Sparrow}
+{Common winter visitor}
+{Slender bird with long tail, grey upper parts and bright yellow underparts.}
+{Found near water bodies and damp areas on campus.}
+{Active forager, running and walking while wagging tail.}
+{Does not breed on campus; winter visitor only.}
+{grey-wagtail.jpg}
+
+\section{Drongos and Orioles}
+\birdslide{Black Drongo}{\textit{Dicrurus macrocercus}}
+{Myna+}
+{Common resident}
+{Glossy black bird with deeply forked tail. Strong hooked bill.}
+{Found throughout campus in open areas with trees.}
+{Bold and aggressive. Often seen chasing other birds. Excellent aerial hunter.}
+{Breeds March to July. Builds cup nest in outer branches.}
+{black-drongo.jpg}
+
+\birdslide{Golden Oriole}{\textit{Oriolus oriolus}}
+{Myna+}
+{Common resident}
+{Male bright yellow with black wings and tail; female duller greenish.}
+{Found in wooded areas across campus.}
+{Shy bird, keeps to canopy. Melodious flute-like calls.}
+{Builds hammock-like nest suspended in tree fork.}
+{golden-oriole.jpg}
+
+\section{Colorful Residents}
+\birdslide{Indian Roller}{\textit{Coracias benghalensis}}
+{Myna++}
+{Common resident}
+{Crow-sized bird with brilliant blue wings and tail. Brown head and back.}
+{Found in open areas with scattered trees.}
+{Makes dramatic rolling display flights. Feeds on large insects, small lizards.}
+{Breeds March to July. Nests in tree hollows.}
+{indian-roller.jpg}
+
+\birdslide{Indian Grey Hornbill}{\textit{Ocyceros birostris}}
+{Crow}
+{Common resident}
+{Large grey bird with long tail and distinctive casque on bill.}
+{Found in wooded areas across campus with large old trees.}
+{Usually seen in pairs, moving from tree to tree. Feeds mainly on fruits.}
+{Female seals herself in tree cavity during breeding.}
+{indian-grey-hornbill.jpg}
+
+\section{Winter Visitors}
+\birdslide{Peregrine Falcon}{\textit{Falco peregrinus}}
+{Kite-}
+{Uncommon winter visitor}
+{Large, powerful falcon with dark grey upperparts and distinctive black 'moustache'.}
+{Occasionally seen around tall buildings and open areas.}
+{Swift and agile hunter, known for spectacular aerial dives.}
+{Does not breed on campus; winter visitor only.}
+{peregrine-falcon.jpg}
+
+\section{Bulbuls}
+\birdslide{Red-vented Bulbul}{\textit{Pycnonotus cafer}}
+{Bulbul}
+{Very common resident}
+{Dark brown-black with scaled pattern, distinctive red vent.}
+{Common throughout campus in all habitats.}
+{Active and noisy. Often in pairs or small groups.}
+{Breeds year-round, peak February to May.}
+{red-vented-bulbul.jpg}
+
+\birdslide{Red-whiskered Bulbul}{\textit{Pycnonotus jocosus}}
+{Bulbul}
+{Common resident}
+{Brown above, white below with red cheek patch and pointed crest.}
+{Found in wooded areas and gardens across campus.}
+{Lively bird with pleasant calls. Often in pairs.}
+{Builds neat cup-shaped nest in shrubs.}
+{red-whiskered-bulbul.jpg}
+
+\section{Babblers}
+\birdslide{Large Grey Babbler}{\textit{Turdoides malcolmi}}
+{Myna+}
+{Common resident}
+{Grey-brown bird with pale streaking. Long graduated tail.}
+{Found in open scrub and gardens across campus.}
+{Lives in noisy groups. Forages on ground, flicking leaves.}
+{Breeds March to September. Builds untidy nest in thorny bushes.}
+{large-grey-babbler.jpg}
+
+\section{Flycatchers}
+\birdslide{Tickell's Blue Flycatcher}{\textit{Muscicapa tickelliae}}
+{Bulbul-}
+{Common resident}
+{Male bright blue above, rufous below. Female duller.}
+{Found in wooded areas with good undergrowth.}
+{Active bird, makes short flycatching sallies from perch.}
+{Breeds April to July. Builds neat cup nest in tree hollow.}
+{tickells-blue-flycatcher.jpg}
+
+\section{Prinias and Warblers}
+\birdslide{Ashy Prinia}{\textit{Prinia socialis}}
+{Sparrow-}
+{Common resident}
+{Ash-grey above, whitish below. Long graduated tail often cocked.}
+{Found in gardens and scrub throughout campus.}
+{Active bird, moves through vegetation making harsh calls.}
+{Breeds mainly June to September. Builds deep cup nest.}
+{ashy-prinia.jpg}
+
+\birdslide{Jungle Prinia}{\textit{Prinia sylvatica}}
+{Sparrow-}
+{Common resident}
+{Grey-brown above, pale below. Darker than Ashy Prinia.}
+{Found in scrub jungle and grassland areas.}
+{Skulking habit, reveals presence by loud calls.}
+{Breeds June to September. Builds ball-shaped nest.}
+{jungle-prinia.jpg}
+
+\birdslide{Common Tailorbird}{\textit{Orthotomus sutorius}}
+{Sparrow--}
+{Common resident}
+{Tiny warbler with long upright tail. Olive-green above.}
+{Found throughout campus in gardens and dense bushes.}
+{Active bird, constantly moving through vegetation.}
+{Makes remarkable nest by stitching living leaves together.}
+{common-tailorbird.jpg}
+
+\birdslide{Lesser Whitethroat}{\textit{Sylvia curruca}}
+{Sparrow-}
+{Common winter visitor}
+{Small warbler with grey-brown upper parts, white throat.}
+{Found in scrub and bushes across campus.}
+{Active but skulking. Forages in bushes for insects.}
+{Does not breed on campus; winter visitor only.}
+{lesser-whitethroat.jpg}
+
+\section{Sparrows and Weavers}
+\birdslide{House Sparrow}{\textit{Passer domesticus}}
+{Sparrow}
+{Very common resident}
+{Male grey-brown with black bib; female plain brown.}
+{Common around buildings and human habitation.}
+{Gregarious, feeds mainly on grains and seeds.}
+{Breeds almost year-round. Nests in holes in buildings.}
+{house-sparrow.jpg}
+
+\birdslide{Baya Weaver}{\textit{Ploceus philippinus}}
+{Sparrow}
+{Common resident}
+{Male bright yellow in breeding; female sparrow-like.}
+{Found in grassland areas and reed beds on campus.}
+{Colonial nester. Males build elaborate pendant nests.}
+{Breeds during monsoon. Males build multiple helmet-shaped nests.}
+{baya-weaver.jpg}
+
+\section{Small Insectivores}
+\birdslide{Oriental White-eye}{\textit{Zosterops palpebrosus}}
+{Sparrow-}
+{Common resident}
+{Tiny olive-green bird with distinctive white eye-ring.}
+{Found in wooded areas and gardens across campus.}
+{Active and acrobatic. Moves in small flocks through foliage.}
+{Breeds March to September. Builds neat cup nest.}
+{oriental-white-eye.jpg}
+
+\birdslide{Scaly-breasted Munia}{\textit{Lonchura punctulata}}
+{Sparrow-}
+{Common resident}
+{Small brown finch with distinctive scaly pattern on breast.}
+{Found in grassy areas and scrub throughout campus.}
+{Social, feeds in small flocks on grass seeds.}
+{Breeds July to October. Builds large ball nest.}
+{scaly-breasted-munia.jpg}
+
+\section{Corvids}
+\birdslide{Rufous Treepie}{\textit{Dendrocitta vagabunda}}
+{Myna++}
+{Common resident}
+{Large rufous and black bird with long graduated tail.}
+{Found in wooded areas across campus.}
+{Bold and inquisitive. Often in small groups.}
+{Breeds March to July. Builds neat cup nest in tree fork.}
+{rufous-treepie.jpg}
+
+\birdslide{House Crow}{\textit{Corvus splendens}}
+{Crow}
+{Very common resident}
+{Grey and black crow with distinct grey neck collar.}
+{Abundant throughout campus, especially near human activity.}
+{Bold and opportunistic. Omnivorous diet.}
+{Breeds March to July. Builds platform nest in trees.}
+{house-crow.jpg}
+
+\birdslide{Large-billed Crow}{\textit{Corvus macrorhynchos}}
+{Crow+}
+{Common resident}
+{Larger than House Crow, all black with massive bill.}
+{Found in wooded areas of campus and surrounding regions.}
+{More cautious than House Crow. Often seen singly or in pairs.}
+{Breeds March to June. Builds large platform nest high in trees.}
+{large-billed-crow.jpg}
+
+\section{Conclusion}
+\begin{frame}{How to Contribute}
+    \begin{itemize}
+        \item Submit your bird sightings to eBird
+        \item Share your photographs
+        \item Report any new species
+        \item Help maintain bird-friendly habitats
+        \item Follow ethical birdwatching practices
+    \end{itemize}
+    \vspace{1em}
+    \centering
+    Visit the SPPU eBird Hotspot: \url{https://ebird.org/hotspot/L1838309}
+\end{frame}
+
+\begin{frame}{Best Birdwatching Spots on Campus}
+    \begin{columns}[T]
+        \column{0.5\textwidth}
+        \textbf{Habitat Types}
+        \begin{itemize}
+            \item Wooded areas near Main Building
+            \item Garden Department grounds
+            \item Campus water bodies
+            \item Open grasslands
+            \item Old growth trees
+        \end{itemize}
+        
+        \column{0.5\textwidth}
+        \textbf{Tips}
+        \begin{itemize}
+            \item Visit different habitats
+            \item Follow quiet paths
+            \item Check flowering trees
+            \item Look for fruiting trees
+            \item Watch for mixed feeding flocks
+        \end{itemize}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Conservation Concerns}
+    \begin{itemize}
+        \item Habitat preservation
+        \item Protection of old trees
+        \item Maintaining water bodies
+        \item Reducing disturbance
+        \item Native plant species
+        \item Light pollution control
+        \item Responsible development
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[plain]{Thank You}
+    \begin{center}
+        \vspace{2em}
+        {\Large Thank you for your attention}
+        \vspace{2em}
+        
+        For more information and updates:\\
+        Visit the SPPU eBird Hotspot\\
+        \url{https://ebird.org/hotspot/L1838309}
+        
+        \vspace{1em}
+        {\small Presentation created by Yogesh Wadadekar}
+    \end{center}
+\end{frame}
+
+\end{document}

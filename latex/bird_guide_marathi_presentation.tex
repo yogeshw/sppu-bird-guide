@@ -1,0 +1,292 @@
+\documentclass[aspectratio=169]{beamer}
+
+% Basic packages
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{xcolor}
+\usepackage{url}
+
+% Set up languages
+\setdefaultlanguage[numerals=devanagari]{marathi}
+\setotherlanguage{english}
+
+% Font configuration
+% Main Devanagari font
+\newfontfamily\devanagarifont[
+    Script=Devanagari,
+    Language=Marathi,
+    UprightFont=*-Regular,
+    BoldFont=*-Bold,
+    ItalicFont=*-Regular,
+    BoldItalicFont=*-Bold,
+    Scale=1.2
+]{Noto Serif Devanagari}
+
+% Devanagari sans serif font - required by polyglossia
+\newfontfamily\devanagarifontsf[
+    Script=Devanagari,
+    Language=Marathi,
+    UprightFont=*-Regular,
+    BoldFont=*-Bold,
+    Scale=1.2
+]{Noto Sans Devanagari}
+
+% Devanagari monospace font
+\newfontfamily\devanagarifonttt[
+    Script=Devanagari,
+    Language=Marathi,
+    UprightFont=*-Regular,
+    BoldFont=*-Bold,
+    Scale=1.0
+]{Noto Sans Devanagari}
+
+% Latin text font
+\newfontfamily{\latintext}[
+    Script=Latin,
+    Ligatures=TeX,
+    UprightFont=*-Regular,
+    BoldFont=*-Bold,
+    Scale=1.0
+]{Noto Serif}
+
+% Set main font
+\setmainfont{Noto Serif Devanagari}[
+    Script=Devanagari,
+    Language=Marathi,
+    UprightFont=*-Regular,
+    BoldFont=*-Bold,
+    Scale=1.2
+]
+
+% Set sans-serif font
+\setsansfont{Noto Sans Devanagari}[
+    Script=Devanagari,
+    Language=Marathi,
+    UprightFont=*-Regular,
+    BoldFont=*-Bold,
+    Scale=1.2
+]
+
+% Theme and color customization
+\usetheme{Madrid}
+\usecolortheme{owl}
+\setbeamercolor{normal text}{fg=white}
+\setbeamercolor{background canvas}{bg=black}
+\setbeamercolor{structure}{fg=white}
+\setbeamercolor{frametitle}{fg=white}
+\setbeamercolor{title}{fg=white}
+\setbeamercolor{section in toc}{fg=white}
+\setbeamertemplate{navigation symbols}{}
+
+% Required packages
+\usepackage{graphicx}
+\graphicspath{{../images/}}
+
+% Fix image credit command to use Latin font for credits
+\newcommand{\imagecredit}[1]{%
+  \def\stripext##1.jpg{##1}%
+  \edef\creditfile{\stripext#1_credit.txt}%
+  {\scriptsize\em \latintext Credit: {\latintext \input{../images/\creditfile}}}%
+}
+
+% Configure hyperref after other packages
+\PassOptionsToPackage{unicode}{hyperref}
+\usepackage{hyperref}
+\urlstyle{same}
+
+% Fix URL font
+\def\UrlFont{\latintext}
+
+% Fix all places where Latin text appears
+\newcommand{\latinphrase}[1]{{\latintext #1}}
+
+\title{सावित्रीबाई फुले पुणे विद्यापीठ परिसरातले पक्षी}
+\author{योगेश वाडदेकर}
+\institute{सावित्रीबाई फुले पुणे विद्यापीठ}
+\date{२०२५}
+
+\begin{document}
+
+\begin{frame}
+    \maketitle
+\end{frame}
+
+\begin{frame}{परिसराचा आढावा}
+    \begin{columns}[T]
+        \column{0.5\textwidth}
+        सावित्रीबाई फुले पुणे विद्यापीठ ({\latinphrase SPPU}) परिसर, शहराच्या मध्यभागी असलेले ४११ एकर जैवविविधता हॉटस्पॉट आहे.
+        \begin{itemize}
+            \item {\latinphrase 18.5529 N} {\latinphrase N} {\latinphrase 73.8352 E} {\latinphrase E} अक्षांश-रेखांश
+            \item समुद्रसपाटीपासून ५६० मीटर उंची
+            \item विविध अधिवास समृद्ध पक्षिजीवन
+            \item वृक्षराजी, गवताळ प्रदेश, जलाशय
+        \end{itemize}
+        \column{0.5\textwidth}
+        परिसरात १५० हून अधिक प्रकारची झाडे:
+        \begin{itemize}
+            \item वड ({\latinphrase\textit{Ficus benghalensis}})
+            \item पिंपळ ({\latinphrase\textit{Ficus religiosa}})
+            \item कडुलिंब ({\latinphrase\textit{Azadirachta indica}})
+            \item काटेसावर ({\latinphrase\textit{Bombax ceiba}})
+            \item अनेक शोभेची झाडे
+        \end{itemize}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{कधी पाहावे}
+    \begin{columns}[T]
+        \column{0.5\textwidth}
+        \textbf{दिवसाची वेळ}
+        \begin{itemize}
+            \item पहाटे (सकाळी ६:००-९:००)
+            \item दुपारनंतर (४:००-६:३०)
+            \item मध्यान्ह - शिकारी पक्षी
+            \item संध्याकाळ - निशाचर प्रजाती
+        \end{itemize}
+        \column{0.5\textwidth}
+        \textbf{हंगामानुसार}
+        \begin{itemize}
+            \item हिवाळा (नोव्हेंबर-फेब्रुवारी)
+            \item पावसाळा (जून-सप्टेंबर)
+            \item उन्हाळा (मार्च-मे)
+            \item पावसाळ्यानंतर (ऑक्टोबर)
+        \end{itemize}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{कसे पाहावे}
+    \begin{columns}[T]
+        \column{0.5\textwidth}
+        \textbf{आवश्यक उपकरणे}
+        \begin{itemize}
+            \item दुर्बीण ({\latinphrase 8x42} किंवा {\latinphrase 10x42})
+            \item क्षेत्र मार्गदर्शिका
+            \item नोंदवही
+        \end{itemize}
+        \column{0.5\textwidth}
+        \textbf{उपयुक्त ॲप्स}
+        \begin{itemize}
+            \item {\latinphrase eBird}
+            \item {\latinphrase Merlin Bird ID}
+            \item {\latinphrase BirdNet}
+        \end{itemize}
+    \end{columns}
+\end{frame}
+
+% Template for bird entries
+\newcommand{\birdslide}[9]{%
+\begin{frame}{#1 ({\latinphrase \textit{#2}})}
+    \begin{columns}[T]
+        \column{0.5\textwidth}
+        \includegraphics[width=\textwidth,height=0.7\textheight,keepaspectratio]{#9}
+        \imagecredit{#9}
+        \column{0.5\textwidth}
+        \textbf{आकार:} #3 \\
+        \textbf{स्थिति:} #4 \\[0.5em]
+        \textbf{वैशिष्ट्ये:} #5 \\[0.5em]
+        \textbf{कुठे आढळतो:} #6 \\[0.5em]
+        \textbf{सवयी:} #7 \\[0.5em]
+        \textbf{घरटे:} #8
+    \end{columns}
+\end{frame}
+}
+
+% Bird entries (first 10 species)
+\section{शिकारी पक्षी}
+\birdslide{घार}{\latinphrase \textit{Milvus migrans}}
+{घारीएवढा}
+{अतिनेहमी आढळणारा स्थानिक}
+{मोठा शिकारी पक्षी. काटेरी शेपटी आणि लांब पंख हे वैशिष्ट्य. पंख काळसर तपकिरी, तळाशी किंचित फिकट.}
+{परिसरातील सर्वत्र}
+{उंच आकाशात गरगर फिरताना दिसते. लहान सस्तन प्राणी, पक्षी आणि मृत प्राणी खाते.}
+{डिसेंबर ते एप्रिल दरम्यान प्रजनन. उंच झाडांवर काड्या-कचऱ्यापासून घरटे.}
+{black-kite.jpg}
+
+\birdslide{काळा शराटी}{\latinphrase \textit{Pseudibis papillosa}}
+{घारीएवढा}
+{नेहमी आढळणारा स्थानिक}
+{मोठा काळा पक्षी, मानेवर लाल पट्टा. लांब वाकडी चोच आणि डोक्यावरील उघडा लाल भाग ठळक.}
+{परिसरातील मोकळ्या जागा, गवताळ प्रदेश आणि पाणवठे}
+{हळूहळू चालत शिकार करतो. लहान गटात आढळतो. कीटक आणि लहान प्राणी खातो.}
+{पावसाळ्यात प्रजनन. मोठ्या झाडांवर मंचासारखे घरटे.}
+{red-naped-ibis.jpg}
+
+\birdslide{बहिरी ससाणा}{\latinphrase \textit{Falco peregrinus}}
+{घारीएवढा}
+{दुर्मिळ हिवाळी पाहुणा}
+{मोठा, शक्तिशाली ससाणा. वरचा भाग गडद करडा, खालून पट्टेदार. काळा 'मिशांसारखा' पट्टा विशिष्ट.}
+{कधीकधी उंच इमारती आणि मोकळ्या जागांमध्ये}
+{वेगवान आणि चपळ शिकारी. हवेत भरारी मारून पक्षी पकडतो.}
+{परिसरात प्रजनन करत नाही; फक्त हिवाळी पाहुणा.}
+{peregrine-falcon.jpg}
+
+\birdslide{शिक्रा}{\latinphrase \textit{Accipiter badius}}
+{मैनेपेक्षा मोठा}
+{नेहमी आढळणारा स्थानिक}
+{छोटा ससाणा, लाल डोळे आणि पट्टेदार छाती विशिष्ट. वरून करडा, खालून पांढरा, तांबूस पट्ट्यांसह.}
+{परिसरातील वृक्षराजी आणि बागा}
+{लहान पक्षी, सस्तन प्राणी आणि कीटक खातो. खूप चपळ शिकारी.}
+{मार्च ते जुलै प्रजनन काळ. झाडांवर काड्या-पानांचे घरटे.}
+{shikra.jpg}
+
+\section{जलचर पक्षी}
+\birdslide{पांढऱ्या छातीची पाणकोंबडी}{\latinphrase \textit{Amaurornis phoenicurus}}
+{बुलबुलापेक्षा मोठी}
+{नेहमी आढळणारा स्थानिक}
+{मध्यम आकाराचा पक्षी. पांढरा चेहरा, गळा, छाती; गडद तपकिरी शरीर. चोचीजवळ लाल पट्टा.}
+{परिसरातील पाणवठे आणि दलदलीचे भाग}
+{पाण्याजवळ राहते. कीटक, छोटे मासे आणि वनस्पती खाते.}
+{दाट वनस्पतीत घरटे.}
+{white-breasted-waterhen.jpg}
+
+\birdslide{ढोकरी}{\latinphrase \textit{Ardeola grayii}}
+{मैनेपेक्षा मोठा}
+{अतिनेहमी आढळणारा स्थानिक}
+{मध्यम आकाराचा बगळा. तपकिरी शरीर, पांढरे पंख. पिवळी चोच आणि पाय.}
+{परिसरातील पाणवठे आणि दलदलीचे भाग}
+{मासे, बेडूक आणि कीटक खातो. पाण्याजवळ बसून शिकार करतो.}
+{जून ते सप्टेंबर प्रजनन काळ. पाण्याजवळील झाडांवर घरटे.}
+{indian-pond-heron.jpg}
+
+\birdslide{रात्र ढोकरी}{\latinphrase \textit{Nycticorax nycticorax}}
+{कावळ्यापेक्षा मोठा}
+{दुर्मिळ स्थानिक}
+{मध्यम आकाराचा बगळा. काळी टोपी, पाठ; करडे पंख; पांढरा तळभाग. लाल डोळे.}
+{परिसरातील पाणवठे आणि दलदलीचे भाग}
+{रात्री सक्रिय. मासे, बेडूक आणि कीटक खातो.}
+{जून ते सप्टेंबर प्रजनन काळ. पाण्याजवळील झाडांवर घरटे.}
+{black-crowned-night-heron.jpg}
+
+\birdslide{गवती बगळा}{\latinphrase \textit{Bubulcus ibis}}
+{मैनेपेक्षा मोठा}
+{अतिनेहमी आढळणारा स्थानिक}
+{मध्यम आकाराचा पांढरा बगळा. प्रजनन काळात डोके, छाती, पाठीवर केशरी पिसारे.}
+{परिसरातील गवताळ भाग आणि मोकळ्या जागा}
+{गुरांच्या जवळपास राहतो. कीटक आणि लहान प्राणी खातो.}
+{जून ते सप्टेंबर प्रजनन काळ. वसाहतीत राहतो.}
+{cattle-egret.jpg}
+
+\birdslide{छोटा बगळा}{\latinphrase \textit{Egretta garzetta}}
+{मैनेपेक्षा मोठा}
+{नेहमी आढळणारा स्थानिक}
+{मध्यम आकाराचा शुभ्र पांढरा बगळा. काळी चोच, काळे पाय, पिवळे पंजे.}
+{परिसरातील पाणवठे आणि दलदलीचे भाग}
+{मासे, बेडूक आणि कीटक खातो. पाण्यात उभा राहून शिकार करतो.}
+{जून ते सप्टेंबर प्रजनन काळ. वसाहतीत राहतो.}
+{little-egret.jpg}
+
+\section{समारोप}
+\begin{frame}{योगदान कसे करावे}
+    \begin{itemize}
+        \item {\latinphrase eBird} वर पक्षी नोंदी करा
+        \item छायाचित्रे शेअर करा
+        \item नवीन प्रजातींची माहिती द्या
+        \item पक्षीमैत्री अधिवास जतन करा
+        \item नैतिक पक्षीनिरीक्षण पद्धती वापरा
+    \end{itemize}
+    \vspace{1em}
+    \centering
+    {\latinphrase SPPU eBird Hotspot}: {\latinphrase \url{https://ebird.org/hotspot/L1838309}}
+\end{frame}
+
+\end{document}
