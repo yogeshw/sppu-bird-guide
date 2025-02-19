@@ -1,74 +1,108 @@
 # Birds of SPPU Campus
 
-This project aims to create a bird guide for the birds of the Savitribai Phule Pune University (SPPU) campus, available in both LaTeX and HTML formats.
+This project aims to create a comprehensive bird guide for the birds of the Savitribai Phule Pune University (SPPU) campus, available in both LaTeX and HTML formats.
 
 ## Project Overview
 
 The guide includes:
 
-*   **High-Quality Images:** A photograph of each bird species.
-*   **Detailed Descriptions:** Text descriptions similar to those found in classic Indian bird guides.
-*   **Elegant LaTeX Design:** A visually appealing layout with one bird per page, text on the left, and the bird's photo on the right.
-*   **Single-File HTML Version:** A comprehensive, accessible HTML guide that mirrors the LaTeX content.
+* **High-Quality Images:** Professional photographs of each bird species found on campus
+* **Detailed Descriptions:** Comprehensive text descriptions similar to those found in classic Indian bird guides
+* **Bilingual Support:** Available in both English and Marathi
+* **Multiple Formats:** 
+  - Elegant LaTeX layout with one bird per page
+  - Responsive HTML version for web browsers
+  - Consistent design across both formats
 
 ## Repository Structure
 
-*   `latex/`: LaTeX source files, images, and style files.
-*   `html/`: HTML output and related resources (CSS, images).
-*   `scripts/`: Conversion and automation scripts.
-*   `images/`: Bird images used in both LaTeX and HTML versions.
-*   `README.md`: This file.
+```
+.
+├── data/         # Bird data and listings
+├── html/         # HTML version and web resources
+│   ├── images/   # Optimized images for web
+│   └── css/      # Style sheets
+├── images/       # Original high-resolution bird images
+├── latex/        # LaTeX source files
+└── scripts/      # Automation and conversion scripts
+```
 
-## Instructions for Contributors
+## Getting Started
 
-1.  **Clone the repository:**
+1. **Clone the repository:**
+   ```bash
+   git clone <repository-url>
+   cd sppu-bird-guide
+   ```
 
-    ```bash
-    git clone <repository-url>
-    cd sppu-bird-guide
-    ```
-2.  **Create a new branch:**
+2. **View the guide:**
+   - Open `html/bird_guide.html` in a web browser for the English version
+   - Open `html/bird_guide_marathi.html` for the Marathi version
+   - For the LaTeX version, see the build instructions below
 
-    ```bash
-    git checkout -b feature/new-bird-entry
-    ```
-3.  **Make changes:** Add content, correct errors, improve styling, etc.
-4.  **Commit your changes:**
+## Contributing
 
-    ```bash
-    git add .
-    git commit -m "Add new bird entry: <Bird Name>"
-    ```
-5.  **Push to your branch:**
+1. **Fork and clone:**
+   ```bash
+   git clone git@github.com:<your-username>/sppu-bird-guide.git
+   cd sppu-bird-guide
+   ```
 
-    ```bash
-    git push origin feature/new-bird-entry
-    ```
-6.  **Submit a pull request:** On GitHub, create a pull request from your branch to the `main` branch.
+2. **Create a new branch:**
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
 
-## Conversion Process (LaTeX to HTML)
+3. **Make your changes:**
+   - Add new bird entries
+   - Improve existing content
+   - Fix errors or enhance styling
+   - Add translations
 
-The `scripts/convert_to_html.sh` script automates the conversion from LaTeX to HTML using Pandoc.
+4. **Submit your changes:**
+   ```bash
+   git add .
+   git commit -m "Description of your changes"
+   git push origin feature/your-feature-name
+   ```
 
-1.  **Install Pandoc:** Follow the instructions at [https://pandoc.org/installing.html](https://pandoc.org/installing.html).
-2.  **Run the conversion script:**
+5. Open a Pull Request on GitHub
 
-    ```bash
-    ./scripts/convert_to_html.sh
-    ```
+## Building the Guide
 
-This script:
+### Prerequisites
+- LaTeX distribution (TeX Live recommended)
+- Pandoc (for HTML conversion)
+- ImageMagick (for image processing)
 
-*   Copies images to the `html/images` directory.
-*   Executes Pandoc with the necessary options to generate the HTML output.
+### LaTeX to HTML Conversion
 
-## Key Technologies
+1. **Install dependencies:**
+   ```bash
+   # Ubuntu/Debian
+   sudo apt-get install texlive-full pandoc imagemagick
+   ```
 
-*   **LaTeX:** Typesetting and document preparation.
-*   **Pandoc:** Document conversion.
-*   **Lua:** Scripting for Pandoc filters.
-*   **HTML/CSS:** Web presentation.
+2. **Run the conversion:**
+   ```bash
+   ./scripts/convert_to_html.sh
+   ```
+
+## Project Status
+
+- [x] Initial bird catalog
+- [x] English guide
+- [x] Marathi translation
+- [x] Web version
+- [ ] Mobile-responsive design
+- [ ] Interactive features
+- [ ] Seasonal bird information
 
 ## License
 
 This project is licensed under the [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+
+## Acknowledgments
+
+- Contributing photographers (credits in individual image files) to the Macaulay Library
+- e-bird
