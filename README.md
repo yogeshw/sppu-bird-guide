@@ -7,7 +7,7 @@ This project aims to create a comprehensive bird guide for the birds of the Savi
 The guide includes:
 
 * **High-Quality Images:** Professional photographs of each bird species found on campus
-* **Detailed Descriptions:** Comprehensive text descriptions similar to those found in classic Indian bird guides
+* **Detailed Descriptions:** Succint text descriptions similar to those found in classic Indian bird literature like Ali & Ripley's Handbook of the Birds of India and Pakistan
 * **Bilingual Support:** Available in both English and Marathi
 * **Multiple Formats:** 
   - Elegant LaTeX layout with one bird per page
